@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: MyString
+  amount: 1
+  purchase_date: 2014-08-22 14:42:51
+  group_id: 
+  user_id: 
+
+two:
+  location: MyString
+  amount: 1
+  purchase_date: 2014-08-22 14:42:51
+  group_id: 
+  user_id: 
