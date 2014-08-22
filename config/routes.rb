@@ -1,74 +1,36 @@
 Wefridgerator::Application.routes.draw do
-  get "arts/index"
-  get "arts/show"
-  get "arts/new"
-  get "arts/create"
-  get "arts/edit"
-  get "arts/update"
-  get "arts/destroy"
-  get "chatrooms/index"
-  get "chatrooms/show"
-  get "chatrooms/new"
-  get "chatrooms/create"
-  get "chatrooms/edit"
-  get "chatrooms/update"
-  get "chatrooms/destroy"
-  get "messages/index"
-  get "messages/show"
-  get "messages/new"
-  get "messages/create"
-  get "messages/edit"
-  get "messages/update"
-  get "messages/destroy"
-  get "receipts/index"
-  get "receipts/show"
-  get "receipts/new"
-  get "receipts/create"
-  get "receipts/edit"
-  get "receipts/update"
-  get "receipts/destroy"
-  get "categories/index"
-  get "categories/show"
-  get "categories/new"
-  get "categories/create"
-  get "categories/edit"
-  get "categories/update"
-  get "categories/destroy"
-  get "containers/index"
-  get "containers/show"
-  get "containers/new"
-  get "containers/create"
-  get "containers/edit"
-  get "containers/update"
-  get "containers/destroy"
-  get "groups/index"
-  get "groups/show"
-  get "groups/new"
-  get "groups/create"
-  get "groups/edit"
-  get "groups/update"
-  get "groups/destroy"
-  get "users/index"
-  get "users/show"
-  get "users/new"
-  get "users/create"
-  get "users/edit"
-  get "users/update"
-  get "users/destroy"
-  get "items/index"
-  get "items/show"
-  get "items/new"
-  get "items/create"
-  get "items/edit"
-  get "items/update"
-  get "items/destroy"
-  get "shopping_lists/index"
-  get "shopping_lists/show"
-  get "shopping_lists/new"
-  get "shopping_lists/create"
-  get "shopping_lists/edit"
-  get "shopping_lists/update"
-  get "shopping_lists/destroy"
+  resources :users
+  resources :shopping_lists
+  
+  resources :groups do
+    resources :containers
+  end
+
+  resources :containers do
+    resources :categories
+  end
+
+  resources :categories do
+    resources :items 
+  end
+
+  resources :groups do
+    resources :receipts
+  end
+
+  resources :groups do
+    resources :chat_rooms
+  end
+
+  resources :chat_rooms do
+    resources :messages
+  end
+
+  resources :conatiners do
+    resources :arts
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
