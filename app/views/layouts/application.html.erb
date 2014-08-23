@@ -9,10 +9,13 @@
 <body>
 
 <% if current_user %>
-	Hi, <%= current_user.name %>!
+	Hi, <%= current_user.first_name %>!
 <% end %>
 
 <%= yield %>
+<% if current_user %>
+<%= link_to "Log out", session_path, method: :delete %>
+<% end %>
 
 </body>
 </html>
