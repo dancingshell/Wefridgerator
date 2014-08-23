@@ -4,8 +4,8 @@ class CreateItems < ActiveRecord::Migration
       t.string :name
       t.datetime :exp_date
       t.integer :quantity
-      t.references :category, index: true
-      t.references :shopping_list, index: true
+      t.references :categories, index: true
+      t.references :shopping_lists, index: true
 
       t.timestamps
     end

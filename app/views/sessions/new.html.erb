@@ -1,8 +1,8 @@
 <h1> LOG IN HERE MOFO! </h1>
 
-<%= form_for @user do |f| %>
+<%= form_for(:session, url: session_path) do |f| %>
 	<%= f.text_field :email, placeholder: "Email dude go here" %>
-	<%= f.text_field :password, placeholder: "Password dude go here" %>
+	<%= f.password_field :password, placeholder: "Password dude go here" %>
 	
 	<%= f.submit "LOG IN FOR CHILLING!" %>
 
