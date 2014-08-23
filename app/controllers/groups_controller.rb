@@ -36,11 +36,12 @@ class GroupsController < ApplicationController
   end
 
   def get_passcode
-    all_passcode = []
+    all_passcodes = []
+    #makes an array with all passcodes 
     @groups.each do |group|
       all_passcode << group.passcode
     end
-    rand_num(all_passcode)
+    rand_num(all_passcodes)
   end
 
   def rand_num(existing_passcodes)
@@ -54,14 +55,5 @@ class GroupsController < ApplicationController
     end
     group_passcode
   end
-
-  # def rand_num
-  #   arr = [1,2,3,4,5]
-  #   @group_passcode = rand(1..9)
-  #   if arr.include?(@group_passcode)
-  #     rand_num
-  #   end
-  #   @group_passcode
-  # end
 
 end
