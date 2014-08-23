@@ -44,16 +44,20 @@ class GroupsController < ApplicationController
   end
 
   def rand_num(existing_passcodes)
-    @group_passcode = rand(100000...999999)
-    if existing_passcodes.include?(@group_passcode)
-      rand_num
+    # generate a random number
+    group_passcode = rand(100000...1000000)
+    # check if the number exists in the array of existing numbers (passed in argument)
+    # if it does, try again (call the function)
+    # if not, return the generated number
+    if existing_passcodes.include?(group_passcode)
+      return rand_num(existing_passcodes) 
     end
-    @group_passcode
+    group_passcode
   end
 
   # def rand_num
   #   arr = [1,2,3,4,5]
-  #   @group_passcode = rand(1...9)
+  #   @group_passcode = rand(1..9)
   #   if arr.include?(@group_passcode)
   #     rand_num
   #   end
