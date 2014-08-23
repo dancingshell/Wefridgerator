@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
 	has_many :containers
 	has_many :user_groups
 	has_many :receipts
+  has_many :chatrooms
 	
 
 end
