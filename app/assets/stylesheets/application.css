@@ -11,3 +11,14 @@
  *= require_self
  *= require_tree .
  */
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+body {
+  background: #4AABCC;
+  color: #3D1429;
+
+}
+a {
+   color: #3D1429;
+}
