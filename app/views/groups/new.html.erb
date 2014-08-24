@@ -1,2 +1,9 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<h1>Make a new fridge group</h1>
+
+<%= form_for @group do |f| %>
+  <%= f.text_field :name, placeholder: "Name your group" %>
+
+
+  <%= f.submit "Add fridge group!" %>
+
+<% end %>

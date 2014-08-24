@@ -1,2 +1,15 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>SIGN UP MOFO!</h1>
+
+<%= form_for @user do |f| %>
+	<%= f.text_field :first_name, placeholder: "First name dude go here" %>
+	<%= f.text_field :last_name, placeholder: "Last name dude go here" %>
+	<%= f.text_field :email, placeholder: "Email dude go here" %>
+	<%= f.password_field :password, placeholder: "Password dude go here" %>
+	<%= f.password_field :password_confirmation, placeholder: "Confirm firme dude go here" %>
+	<%= f.text_field :zipcode, placeholder: "Zipcode dude go here" %>
+
+	<%= f.submit "Submit HERE FOR FRDGES AND %*&*&" %>
+
+<% end %>
+
+
