@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
   end
 
   def new
@@ -22,9 +23,11 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
   end
 
   def update
+    @group = Group.find(params[:id])
   end
 
   def destroy
@@ -38,8 +41,10 @@ class GroupsController < ApplicationController
   def get_passcode
     all_passcodes = []
     #makes an array with all passcodes 
-    @groups.each do |group|
-      all_passcode << group.passcode
+    if @groups != nil
+      @groups.each do |group| 
+        all_passcode << group.passcode
+      end
     end
     rand_num(all_passcodes)
   end
