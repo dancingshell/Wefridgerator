@@ -47,18 +47,24 @@ window.onload = function() {
 	});
 
 	// Event Listener for when the dragged element dropped in the drop zone.
-	dropZoneOne.addEventListener('drop', function(e) {
-		if (e.preventDefault) e.preventDefault(); 
-  	if (e.stopPropagation) e.stopPropagation(); 
+	// dropZoneOne.addEventListener('drop', function(e) {
+	// 	if (e.preventDefault) e.preventDefault(); 
+ //  	if (e.stopPropagation) e.stopPropagation(); 
 
-		this.className = "";
-		document.getElementById("result").innerHTML = "Added " + e.dataTransfer.getData('text');
-		console.log("dropped " + drop);
+  	dropZoneOne.addEventListener('drop', function loadPath(){
+  		window.location.href = " <%= new_category_item_path(@categories) %>";
+  	});
+
+ 
+
+	// 	this.className = "";
+	// 	document.getElementById("result").innerHTML = "Added " + e.dataTransfer.getData('text');
+	// 	console.log("dropped " + 'drop');
 
 
-		// Remove the element from the list.
-		return false;
-	});
+	// 	// Remove the element from the list.
+	// 	return false;
+	// });
 
 
 
@@ -120,6 +126,9 @@ window.onload = function() {
 	
 };
 
+
+
+
 </script>
 
 <style>
@@ -147,18 +156,19 @@ window.onload = function() {
 	<% @categories.each do |c| %> 
 	<li draggable="true"> <%= link_to c.name, new_category_item_path(c) %> </li>
 
+
+
+
 	 <% end %>
 
 	<div id="result"> </div>
 	<div id="drop-target-one">
 	<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
-		
-	
 	
 		</div>
-
-
 		</body>
+
+
 
 
 </html>
