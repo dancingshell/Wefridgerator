@@ -3,13 +3,14 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     @item = Item.new
 
-
   end
 
   def show
+    @category = Category.find(params[:id])
   end
 
   def new
+    @item = Item.new
   end
 
   def create
@@ -23,8 +24,6 @@ class CategoriesController < ApplicationController
 
   def destroy
   end
-
-
 
 
 end

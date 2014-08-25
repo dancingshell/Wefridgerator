@@ -1,3 +1,52 @@
+
+<style>
+.fridge-drop-container{
+	width: 100%;
+	height: 100%;
+}
+#drop-target-one {
+	width: 500px;
+	height: 500px;
+}
+
+
+
+</style>
+
+
+	<div class="container">
+
+		<div id="dd-elements" class="clearfix">
+			<ul id="drag-elements">
+
+
+
+	<% @categories.each do |c| %> 
+	<li draggable="true"> <%= link_to c.name, new_category_item_path(c) %> </li>
+
+
+
+
+	 <% end %>
+
+	<div id="result"></div>
+	<div id="drop-target-one">
+		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
+		</div>
+
+	</div>
+
+<!-- Large modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= render file: "items/new", modal: true %>
+    </div>
+  </div>
+</div>
+
 <script>
 window.onload = function() {
 
@@ -46,20 +95,21 @@ window.onload = function() {
 		this.className = "";
 	});
 
-	// Event Listener for when the dragged element dropped in the drop zone.
-	// dropZoneOne.addEventListener('drop', function(e) {
-	// 	if (e.preventDefault) e.preventDefault(); 
- //  	if (e.stopPropagation) e.stopPropagation(); 
+	//Event Listener for when the dragged element dropped in the drop zone.
+	dropZoneOne.addEventListener('drop', function(e) {
+		if (e.preventDefault) e.preventDefault(); 
+  	if (e.stopPropagation) e.stopPropagation(); 
 
-  	dropZoneOne.addEventListener('drop', function loadPath(){
-  		window.location.href = " <%= new_category_item_path(@categories) %>";
+  	//dropZoneOne.addEventListener('drop', function loadPath(){
+  		//window.location.href = " <%= new_category_item_path(@categories) %>";
+  	this.className = "";
+		document.getElementById("result").innerHTML = "Added " + e.dataTransfer.getData('text');
+		console.log("dropped " + e.dataTransfer.getData('text'));
   	});
 
  
 
-	// 	this.className = "";
-	// 	document.getElementById("result").innerHTML = "Added " + e.dataTransfer.getData('text');
-	// 	console.log("dropped " + 'drop');
+		
 
 
 	// 	// Remove the element from the list.
@@ -131,43 +181,4 @@ window.onload = function() {
 
 </script>
 
-<style>
-.fridge-drop-container{
-	width: 100%;
-	height: 100%;
-}
-#drop-target-one {
-	width: 500px;
-	height: 500px;
-}
 
-
-
-</style>
-
-
-	<div class="container">
-
-		<div id="dd-elements" class="clearfix">
-			<ul id="drag-elements">
-
-
-
-	<% @categories.each do |c| %> 
-	<li draggable="true"> <%= link_to c.name, new_category_item_path(c) %> </li>
-
-
-
-
-	 <% end %>
-
-	<div id="result"></div>
-	<div id="drop-target-one">
-
-		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
-		</div>
-
-	</div>
-
-
-</html>

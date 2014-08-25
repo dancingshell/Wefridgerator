@@ -1,2 +1,4 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<%= form_for @item, {url: category_items_path(@categories)} do |f| %>
+<%= f.text_field :name, placeholder: "Item name" %>
+<%= f.submit %>
+<% end %>
