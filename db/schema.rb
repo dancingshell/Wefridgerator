@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823012946) do
+ActiveRecord::Schema.define(version: 20140825002323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 20140823012946) do
   add_index "chatrooms", ["user_id"], name: "index_chatrooms_on_user_id", using: :btree
 
   create_table "containers", force: true do |t|
-    t.string   "type"
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "container_type"
   end
 
   add_index "containers", ["group_id"], name: "index_containers_on_group_id", using: :btree
