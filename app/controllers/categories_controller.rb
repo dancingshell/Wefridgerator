@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @item = Item.new
+
+
   end
 
   def show
@@ -21,4 +23,8 @@ class CategoriesController < ApplicationController
 
   def destroy
   end
+
+
+
+
 end

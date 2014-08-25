@@ -52,7 +52,8 @@ window.onload = function() {
   	if (e.stopPropagation) e.stopPropagation(); 
 
 		this.className = "";
-		this.innerHTML = "Added " + e.dataTransfer.getData('text');
+		document.getElementById("result").innerHTML = "Added " + e.dataTransfer.getData('text');
+		console.log("dropped " + drop);
 
 
 		// Remove the element from the list.
@@ -120,6 +121,22 @@ window.onload = function() {
 };
 
 </script>
+
+<style>
+.fridge-drop-container{
+	width: 100%;
+	height: 100%;
+}
+#drop-target-one {
+	width: 500px;
+	height: 500px;
+}
+
+
+
+</style>
+
+
 	<div class="container">
 
 		<div id="dd-elements" class="clearfix">
@@ -132,21 +149,16 @@ window.onload = function() {
 
 	 <% end %>
 
-
+	<div id="result"> </div>
 	<div id="drop-target-one">
-				Drop Here!
-			</div>
+	<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
+		
+	
+	
 		</div>
 
-		
 
-
-
-	</div>
-</body>
-
-
-   
+		</body>
 
 
 </html>
