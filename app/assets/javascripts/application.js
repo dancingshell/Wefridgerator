@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+angular.module("WefridgeratorApp", []).controller("WefridgeratorCtrl", ['$scope', '$http', function($scope, $http){
+
+}])
