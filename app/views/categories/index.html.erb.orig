@@ -51,9 +51,15 @@ window.onload = function() {
 	// 	if (e.preventDefault) e.preventDefault(); 
  //  	if (e.stopPropagation) e.stopPropagation(); 
 
+<<<<<<< HEAD
+		this.className = "";
+		document.getElementById("result").innerHTML = "Added " + e.dataTransfer.getData('text');
+		console.log("dropped " + e.dataTransfer.getData('text'));
+=======
   	dropZoneOne.addEventListener('drop', function loadPath(){
   		window.location.href = " <%= new_category_item_path(@categories) %>";
   	});
+>>>>>>> 1b63ec6bd48c93cfab8da143b6ee2d460e02131c
 
  
 
@@ -163,11 +169,21 @@ window.onload = function() {
 
 	<div id="result"></div>
 	<div id="drop-target-one">
+<<<<<<< HEAD
+=======
+	<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
+	
+		</div>
+		</body>
+>>>>>>> 1b63ec6bd48c93cfab8da143b6ee2d460e02131c
 
 		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
 		</div>
 
+<<<<<<< HEAD
 	</div>
+=======
+>>>>>>> 1b63ec6bd48c93cfab8da143b6ee2d460e02131c
 
 
 </html>
