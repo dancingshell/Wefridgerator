@@ -1,1 +1,6 @@
 <br><%= link_to "Create group!", new_group_path %>
+
+
+<% @user.groups.each do |g| %>
+<%= g.name %>
+<% end %>

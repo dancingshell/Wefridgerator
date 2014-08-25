@@ -1,9 +1,11 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.all
+
   end
 
   def show
+
     @group = Group.find(params[:id])
   end
 
@@ -35,8 +37,10 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, :passcode, :owner)
+    params.require(:group).permit(:name, :passcode, :owner, :container_attributes => [:name])
   end
+
+
 
   def get_passcode
     all_passcodes = []
