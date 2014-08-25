@@ -1,6 +1,4 @@
-
-
-<%= form_for @item, {url: category_items_path(@categories)} do |f| %>
+<%= form_for @item, {url: category_items_path(@category)} do |f| %>
 <%= f.text_field :name, placeholder: "Item name" %>
 <%= f.submit %>
 <% end %>
