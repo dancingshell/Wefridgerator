@@ -22,8 +22,11 @@
 
 
 	<% @categories.each do |c| %> 
-	<li draggable="true"> <%= link_to c.name, new_category_item_path(c) %> </li>
 
+
+
+<li draggable="true"> <%= link_to c.name, new_category_item_path(c), modal: true  %> </li>
+	
 
 
 
@@ -36,16 +39,7 @@
 
 	</div>
 
-<!-- Large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <%= render file: "items/new", modal: true %>
-    </div>
-  </div>
-</div>
 
 <script>
 window.onload = function() {
@@ -64,7 +58,7 @@ window.onload = function() {
 		// Event Listener for when the drag interaction starts.
 		dragElements[i].addEventListener('dragstart', function(e) {
 			e.dataTransfer.effectAllowed = 'move';
-			e.dataTransfer.setData('text', this.innerHTML);
+
 			elementDragged = this;
 		});
 
@@ -95,17 +89,22 @@ window.onload = function() {
 		this.className = "";
 	});
 
-	//Event Listener for when the dragged element dropped in the drop zone.
+	// Event Listener for when the dragged element dropped in the drop zone.
 	dropZoneOne.addEventListener('drop', function(e) {
+	var data = e.dataTransfer.getData('text');
 		if (e.preventDefault) e.preventDefault(); 
   	if (e.stopPropagation) e.stopPropagation(); 
 
-  	//dropZoneOne.addEventListener('drop', function loadPath(){
-  		//window.location.href = " <%= new_category_item_path(@categories) %>";
+
   	this.className = "";
-		document.getElementById("result").innerHTML = "Added " + e.dataTransfer.getData('text');
-		console.log("dropped " + e.dataTransfer.getData('text'));
+		window.location.href = e.dataTransfer.getData('text');
+
+		console.log("dropped " + data);
   	});
+
+  	// dropZoneOne.addEventListener('drop', function loadPath(e){
+  	// 	window.location.href = e.dataTransfer.setData('text', this.id);
+  	// }); 
 
  
 
@@ -124,55 +123,55 @@ window.onload = function() {
 	*	Demo 2: Text Files
 	*
 	*/
-	var dropZoneTwo = document.querySelector('#dd-files');
-	var fileContentPane = document.querySelector('#file-content');
+	// var dropZoneTwo = document.querySelector('#dd-files');
+	// var fileContentPane = document.querySelector('#file-content');
 
-	// Event Listener for when the dragged file is over the drop zone.
-	dropZoneTwo.addEventListener('dragover', function(e) {
-		if (e.preventDefault) e.preventDefault(); 
-		if (e.stopPropagation) e.stopPropagation(); 
+	// // Event Listener for when the dragged file is over the drop zone.
+	// dropZoneTwo.addEventListener('dragover', function(e) {
+	// 	if (e.preventDefault) e.preventDefault(); 
+	// 	if (e.stopPropagation) e.stopPropagation(); 
 
-		e.dataTransfer.dropEffect = 'copy';
-	});
+	// 	e.dataTransfer.dropEffect = 'copy';
+	// });
 
-	// Event Listener for when the dragged file enters the drop zone.
-	dropZoneTwo.addEventListener('dragenter', function(e) {
-		this.className = "over";
-	});
+	// // Event Listener for when the dragged file enters the drop zone.
+	// dropZoneTwo.addEventListener('dragenter', function(e) {
+	// 	this.className = "over";
+	// });
 
-	// Event Listener for when the dragged file leaves the drop zone.
-	dropZoneTwo.addEventListener('dragleave', function(e) {
-		this.className = "";
-	});
+	// // Event Listener for when the dragged file leaves the drop zone.
+	// dropZoneTwo.addEventListener('dragleave', function(e) {
+	// 	this.className = "";
+	// });
 
-	// Event Listener for when the dragged file dropped in the drop zone.
-	dropZoneTwo.addEventListener('drop', function(e) {
-		if (e.preventDefault) e.preventDefault(); 
-		if (e.stopPropagation) e.stopPropagation(); 
+	// // Event Listener for when the dragged file dropped in the drop zone.
+	// dropZoneTwo.addEventListener('drop', function(e) {
+	// 	if (e.preventDefault) e.preventDefault(); 
+	// 	if (e.stopPropagation) e.stopPropagation(); 
 
-		this.className = "";
+	// 	this.className = "";
 
-		var fileList = e.dataTransfer.files;
+	// 	var fileList = e.dataTransfer.files;
 
-		if (fileList.length > 0) {
-			readTextFile(fileList[0]);
-		}
-	});
+	// 	if (fileList.length > 0) {
+	// 		readTextFile(fileList[0]);
+	// 	}
+	// });
 
 
 	// Read the contents of a file.
-	function readTextFile(file) {
-		var reader = new FileReader();
+	// function readTextFile(file) {
+	// 	var reader = new FileReader();
 
-		reader.onloadend = function(e) {
-			if (e.target.readyState == FileReader.DONE) {
-				var content = reader.result;
-				fileContentPane.innerHTML = "File: " + file.name + "\n\n" + content;
-			}
-		}
+	// 	reader.onloadend = function(e) {
+	// 		if (e.target.readyState == FileReader.DONE) {
+	// 			var content = reader.result;
+	// 			fileContentPane.innerHTML = "File: " + file.name + "\n\n" + content;
+	// 		}
+	// 	}
 		
-    reader.readAsBinaryString(file);
-	}
+ //    reader.readAsBinaryString(file);
+	// }
 	
 };
 

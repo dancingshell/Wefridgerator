@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :get_category
   def index
     @items = Item.all
