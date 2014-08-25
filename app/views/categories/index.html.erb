@@ -53,7 +53,7 @@ window.onload = function() {
 
 		this.className = "";
 		document.getElementById("result").innerHTML = "Added " + e.dataTransfer.getData('text');
-		console.log("dropped " + drop);
+		console.log("dropped " + e.dataTransfer.getData('text'));
 
 
 		// Remove the element from the list.
@@ -149,16 +149,13 @@ window.onload = function() {
 
 	 <% end %>
 
-	<div id="result"> </div>
+	<div id="result"></div>
 	<div id="drop-target-one">
-	<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
-		
-	
-	
+
+		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
 		</div>
 
-
-		</body>
+	</div>
 
 
 </html>
