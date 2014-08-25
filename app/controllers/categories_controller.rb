@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @item = Item.new
-
   end
 
   def show
@@ -10,6 +9,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    @category = Category.find(params[:id])
     @item = Item.new
   end
 

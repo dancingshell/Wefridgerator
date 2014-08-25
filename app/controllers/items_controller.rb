@@ -25,6 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def get_category
-    @category = Category.find(params[:category_id])
+    @category = Category.find(params[:id])
   end
 end
