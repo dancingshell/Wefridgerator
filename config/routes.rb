@@ -2,39 +2,31 @@ Wefridgerator::Application.routes.draw do
   root 'users#new'
 
   resources :users
-  resources :sessions
+
+  resource :session, only: [:new, :create, :destroy]
   resources :shopping_lists
 
-
-  get "categories/api"  => "categories#nothing"
+  get "categories/api/"  => "categories#nothing"
   get "categories/api/:s" => "categories#check_anagram"
 
   resources :groups do
+    resources :user_groups, only:[:new, :create]
     resources :containers
+    resources :receipts
+    resources :chat_rooms
   end
 
   resources :containers do
     resources :categories
+    resources :arts
   end
 
   resources :categories do
     resources :items 
   end
 
-  resources :groups do
-    resources :receipts
-  end
-
-  resources :groups do
-    resources :chat_rooms
-  end
-
   resources :chat_rooms do
     resources :messages
-  end
-
-  resources :conatiners do
-    resources :arts
   end
 
 end

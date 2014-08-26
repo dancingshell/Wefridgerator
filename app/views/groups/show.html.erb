@@ -1,8 +1,14 @@
+
+<% if @group.owner == current_user.id.to_s %>
+
 <h1>Welcome to <%= @group.name %></h1>
 <%= @group.passcode %>
 <%= @group.name %>
 
-create a container
+<%= link_to "Add Container",new_group_container_path(@group) %>
+<%= link_to "Invite friends", new_group_user_group_path(@group) %>
+<% else %>
 
 
-<%= link_to "CONTATINER",new_group_container_path(@group) %>
+
+<% end %>

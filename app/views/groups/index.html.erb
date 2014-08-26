@@ -2,8 +2,8 @@
 <p>Find me in app/views/groups/index.html.erb</p>
 
 <% @groups.each do |g| %>
-  <% if g.owner = current_user %>
+  <% if g.owner == current_user%>
     <li><%= link_to g.name, new_group_container_path(g) %></li>
   <% end %>
 <% end %>
-<%= link_to "CONTATINER", new_group_container_path(@groups) %>
+<%= link_to "Make group", new_group_path %>

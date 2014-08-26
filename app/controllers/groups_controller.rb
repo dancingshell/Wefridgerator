@@ -37,14 +37,14 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, :passcode, :owner, :container_attributes => [:name])
+    params.require(:group).permit(:name, :passcode, :owner)
   end
 
 
 
   def get_passcode
     all_passcodes = []
-    #makes an array with all passcodes 
+    # makes an array with all passcodes 
     if @groups != nil
       @groups.each do |group| 
         all_passcode << group.passcode
