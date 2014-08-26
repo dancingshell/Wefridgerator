@@ -67,14 +67,14 @@ ActiveRecord::Schema.define(version: 20140825002323) do
     t.string   "name"
     t.datetime "exp_date"
     t.integer  "quantity"
-    t.integer  "category_id"
-    t.integer  "shopping_list_id"
+    t.integer  "categories_id"
+    t.integer  "shopping_lists_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
-  add_index "items", ["shopping_list_id"], name: "index_items_on_shopping_list_id", using: :btree
+  add_index "items", ["categories_id"], name: "index_items_on_categories_id", using: :btree
+  add_index "items", ["shopping_lists_id"], name: "index_items_on_shopping_lists_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "chatroom_id"

@@ -2,7 +2,7 @@ Wefridgerator::Application.routes.draw do
   root 'users#new'
 
   resources :users
-  resource :session, only: [:new, :create, :destroy]
+  resources :sessions
   resources :shopping_lists
 
   resources :groups do
