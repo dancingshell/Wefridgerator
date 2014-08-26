@@ -9,7 +9,7 @@ class UserGroupsController < ApplicationController
   def create
     group = Group.where(id: params[:group_id]).first
     if params[:group][:passcode].to_i == group.passcode
-      raise "you made it!!!"
+      redirect_to groups_path
     end
   end
 
