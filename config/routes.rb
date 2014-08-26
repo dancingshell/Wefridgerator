@@ -5,6 +5,10 @@ Wefridgerator::Application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :shopping_lists
 
+
+  # get "categories/"  => "categories#nothing"
+  get "categories/:s" => "categories#check_anagram"
+
   resources :groups do
     resources :containers
   end

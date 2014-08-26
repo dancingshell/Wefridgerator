@@ -9,8 +9,13 @@
 	height: 500px;
 }
 
-
-
+.is_anagram {
+  background: green;
+}
+.not_anagram {
+  background: red;
+}
+  
 </style>
 
 
@@ -23,9 +28,9 @@
 
 	<% @categories.each do |c| %> 
 
+	<% @category = c %>
 
-
-<li draggable="true"> <%= link_to c.name, new_category_item_path(c), modal: true  %> </li>
+<li draggable="true"><%= link_to c.name, new_category_item_path(c), modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg" %></li>
 	
 
 
@@ -33,11 +38,28 @@
 	 <% end %>
 
 	<div id="result"></div>
-	<div id="drop-target-one">
+	<div id="drop-target-one" >
 		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
 		</div>
 
 	</div>
+
+<!-- angular -->
+
+<h1>Anagram of Palindrome Checker</h1>
+
+<input style="font-size:40px;" type="text" ng-model="teststring" ng-class="{is_anagram: data==1, not_anagram: data==0}" ng-change="is_anagram()"/>
+{{data}}
+
+<!-- modal -->
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
 
 
 
@@ -174,6 +196,7 @@ window.onload = function() {
 	// }
 	
 };
+
 
 
 

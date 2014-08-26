@@ -17,6 +17,11 @@
 //= require_tree .
 angular.module("WefridgeratorApp", []).controller("WefridgeratorCtrl", ['$scope', '$http', function($scope, $http){
 
-
+  console.log("angular loaded");
+  $scope.is_anagram = function() {
+    var data = $http.get("http://localhost:4000/categories/" + $scope.teststring).success(function(data, status, config){
+      $scope.data = data;
+    });
+  };
 
 }])
