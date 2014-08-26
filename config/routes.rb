@@ -6,8 +6,8 @@ Wefridgerator::Application.routes.draw do
   resources :shopping_lists
 
 
-  # get "categories/"  => "categories#nothing"
-  get "categories/:s" => "categories#check_anagram"
+  get "categories/api"  => "categories#nothing"
+  get "categories/api/:s" => "categories#check_anagram"
 
   resources :groups do
     resources :containers

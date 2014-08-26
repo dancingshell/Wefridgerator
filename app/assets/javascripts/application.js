@@ -19,7 +19,7 @@ angular.module("WefridgeratorApp", []).controller("WefridgeratorCtrl", ['$scope'
 
   console.log("angular loaded");
   $scope.is_anagram = function() {
-    var data = $http.get("http://localhost:4000/categories/" + $scope.teststring).success(function(data, status, config){
+    var data = $http.get("http://localhost:3000/categories/api/" + $scope.teststring).success(function(data, status, config){
       $scope.data = data;
     });
   };
