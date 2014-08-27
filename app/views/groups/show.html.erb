@@ -5,6 +5,9 @@
 <%= @group.passcode %>
 <%= @group.name %>
 
+<%= @group.containers.first %>
+<!-- Kaitlin tricked the system by going into the array which is containers, but there is only one. So it displays the first which is the only one! -->
+
 <%= link_to "Add Container",new_group_container_path(@group) %>
 <%= link_to "Invite friends", new_group_user_group_path(@group) %>
 <% else %>

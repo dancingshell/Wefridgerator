@@ -5,7 +5,6 @@ class GroupsController < ApplicationController
   end
 
   def show
-
     @group = Group.find(params[:id])
   end
 
@@ -18,6 +17,8 @@ class GroupsController < ApplicationController
     @group.owner = current_user
     @group.passcode = get_passcode
     if @group.save
+      Container.create!(group: @group)
+      #The first group refers to the group_id for the container and the second group refers to the group being created
       redirect_to group_path(@group)
     else
       redirect_to new_group_path

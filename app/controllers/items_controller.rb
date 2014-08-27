@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -13,6 +14,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = @category.items.new(item_params)
+    @item.container_type = params[:container_type]
+    #This container type refrs to the param name we put in the Items show view
     if @item.save
       redirect_to category_item_path(@category, @item)
     else
@@ -30,7 +33,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :category_id)
+    params.require(:item).permit(:name, :category_id, :container_id, :user_id, :exp_date, :quantity, :is_public)
   end
 
   def get_category

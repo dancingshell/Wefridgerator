@@ -1,5 +1,8 @@
 class UserGroupsController < ApplicationController
 
+  def index
+    @user_groups = UserGroup.all
+  end
 
   def new
     @user_group = UserGroup.new
@@ -9,7 +12,14 @@ class UserGroupsController < ApplicationController
   def create
     group = Group.where(id: params[:group_id]).first
     if params[:group][:passcode].to_i == group.passcode
-      redirect_to groups_path
+      @user_group = UserGroup.new
+      @user_group.user = current_user
+      @user_group.group = group
+      if @user_group.save
+        redirect_to group_user_groups_path
+      else
+        render "new"
+      end
     end
   end
 

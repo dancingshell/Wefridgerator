@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825002323) do
+ActiveRecord::Schema.define(version: 20140827170535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,9 @@ ActiveRecord::Schema.define(version: 20140825002323) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.integer  "container_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "categories", ["container_id"], name: "index_categories_on_container_id", using: :btree
 
   create_table "chatrooms", force: true do |t|
     t.integer  "group_id"
@@ -50,7 +47,6 @@ ActiveRecord::Schema.define(version: 20140825002323) do
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "container_type"
   end
 
   add_index "containers", ["group_id"], name: "index_containers_on_group_id", using: :btree
@@ -67,14 +63,18 @@ ActiveRecord::Schema.define(version: 20140825002323) do
     t.string   "name"
     t.datetime "exp_date"
     t.integer  "quantity"
-    t.integer  "categories_id"
-    t.integer  "shopping_lists_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "container_id"
+    t.boolean  "is_public"
+    t.string   "container_type"
   end
 
-  add_index "items", ["categories_id"], name: "index_items_on_categories_id", using: :btree
-  add_index "items", ["shopping_lists_id"], name: "index_items_on_shopping_lists_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["container_id"], name: "index_items_on_container_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "chatroom_id"
