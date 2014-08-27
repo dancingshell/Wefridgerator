@@ -124,7 +124,7 @@ window.onload = function() {
 
 
   	this.className = "";
-		window.location.href = e.dataTransfer.getData('text');
+		window.location.href = "<%= new_category_item_path(@category) %>";
 
 		console.log("dropped " + data);
   	});
