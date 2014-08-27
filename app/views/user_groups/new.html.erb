@@ -1,4 +1,4 @@
 <%= form_for [@group, @user_group] do |f| %>
-  <%= text_field :group, :passcode, placeholder: "Enter group passcode" %>
+  <%= text_field :group, :passcode, value: nil, placeholder: "Enter group passcode" %>
   <%= f.submit "Submit" %>
 <% end %>
