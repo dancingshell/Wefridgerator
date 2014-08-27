@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
   	#.first will refer to the id 
   end
 
-  def current_groups
+  def current_group
     #Find all the user groups of the current_user
-    user_groups = UserGroup.where(user_id: current_user.id)
+    user_groups = UserGroup.where(user_id: current_user.id.to_s)
     #Create an array of all the group_ids for those user_groups
     groups = user_groups.map(&:group_id)
     #Find the groups associated with those user_groups

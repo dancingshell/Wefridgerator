@@ -10,7 +10,7 @@ Wefridgerator::Application.routes.draw do
   get "categories/api/:s" => "categories#check_anagram"
 
   resources :groups do
-    resources :user_groups, only:[:new, :create]
+    resources :user_groups, only:[:index, :new, :create]
     resources :containers
     resources :receipts
     resources :chat_rooms
