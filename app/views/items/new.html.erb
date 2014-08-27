@@ -1,4 +1,6 @@
 <%= form_for @item, {url: category_items_path(@category)} do |f| %>
 <%= f.text_field :name, placeholder: "Item name" %>
+<%= f.number_field :quantity, placeholder: "Quantity" %>
+<%= f.date_field :exp_date, placeholder: "Expiration Date" %> 
 <%= f.submit %>
 <% end %>

@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -30,7 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :category_id)
+    params.require(:item).permit(:name, :category_id, :contrainer_id, :user_id, :exp_date, :quantity, :in_list, :in_container, :is_public)
   end
 
   def get_category
