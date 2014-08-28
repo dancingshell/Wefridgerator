@@ -7,6 +7,7 @@ Wefridgerator::Application.routes.draw do
 
   resources :static_pages 
 
+  get "categories/:id/items/new_sl" => "items#shoppinglist", as: :new_shopping_list_item
   get "categories/api/"  => "categories#nothing"
   get "categories/api/:s" => "categories#check_anagram"
 

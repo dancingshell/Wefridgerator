@@ -5,9 +5,18 @@
 	height: 100%;
 }
 #drop-target-one {
-	width: 500px;
-	height: 500px;
+	width: 180px;
+	height: 340px;
+	border: 2px solid red;
 }
+
+#drop-target-two {
+	width: 180px;
+	height: 340px;
+	border: 2px solid red;
+}
+
+
 .is_anagram {
   background: green;
 }
@@ -29,6 +38,8 @@
 
 <% @container.categories.each do |category| %>
 
+
+
 <li draggable="true"><%= link_to category.name, new_category_item_path(category), modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg" %> <%= category.container.id %></li>
 	
 
@@ -42,6 +53,18 @@
 		</div>
 
 	</div>
+
+<br>
+
+
+	<div id="result"></div>
+	<div id="drop-target-two" >
+		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
+		</div>
+
+	</div>
+
+
 
 <% current_group.each do |g| %>
 <%= g.name %>
@@ -73,7 +96,7 @@ window.onload = function() {
 	*	Demo 1: Elements
 	*
 	*/
-	var dropZoneOne = document.querySelector('#drop-target-one');
+	var dropZoneOne = document.querySelector('#drop-target-two');
 	var dragElements = document.querySelectorAll('#drag-elements li');
 	var elementDragged = null;
 
@@ -121,12 +144,79 @@ window.onload = function() {
 
 
   	this.className = "";
-		window.location.href = "<%= new_category_item_path(@category) %>";
+		window.location.href = e.dataTransfer.getData('text');
 
 		console.log("dropped " + data);
   	});
 
-  	// dropZoneOne.addEventListener('drop', function loadPath(e){
+
+
+
+
+
+
+var dropZoneTwo = document.querySelector('#drop-target-one');
+	var dragElements = document.querySelectorAll('#drag-elements li');
+	var elementDragged = null;
+
+	for (var i = 0; i < dragElements.length; i++) {
+
+		// Event Listener for when the drag interaction starts.
+		dragElements[i].addEventListener('dragstart', function(e) {
+			e.dataTransfer.effectAllowed = 'move';
+
+			elementDragged = this;
+		});
+
+		// Event Listener for when the drag interaction finishes.
+		dragElements[i].addEventListener('dragend', function(e) {
+			elementDragged = null;
+		});
+	};
+
+	// Event Listener for when the dragged element is over the drop zone.
+	dropZoneTwo.addEventListener('dragover', function(e) {
+		if (e.preventDefault) {
+			e.preventDefault();
+		}
+
+		e.dataTransfer.dropEffect = 'move';
+
+		return false;
+	});
+
+	// Event Listener for when the dragged element enters the drop zone.
+	dropZoneTwo.addEventListener('dragenter', function(e) {
+		this.className = "over";
+	});
+
+	// Event Listener for when the dragged element leaves the drop zone.
+	dropZoneTwo.addEventListener('dragleave', function(e) {
+		this.className = "";
+	});
+
+	// Event Listener for when the dragged element dropped in the drop zone.
+	dropZoneTwo.addEventListener('drop', function(e) {
+	var data = e.dataTransfer.getData('text');
+		if (e.preventDefault) e.preventDefault(); 
+  	if (e.stopPropagation) e.stopPropagation(); 
+
+
+  	this.className = "";
+		window.location.href = e.dataTransfer.getData('text') + 2;
+
+		console.log("dropped " + data);
+  	});
+
+
+
+
+
+
+
+
+
+  	// dropZoneTwo.addEventListener('drop', function loadPath(e){
   	// 	window.location.href = e.dataTransfer.setData('text', this.id);
   	// }); 
 
