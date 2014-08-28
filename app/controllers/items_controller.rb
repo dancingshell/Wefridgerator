@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :get_category
+  before_action :get_category, only: [:index, :show, :edit, :create, :update, :destroy]
   def index
     @items = Item.all
   end
@@ -8,17 +8,17 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def new
-    @item = Item.new
-  end
+  # def new
+  #   @item = Item.new
+  # end
 
   def new_item
     @item = Item.new
+    @category = Category.find(params[:id])
   end
 
   def create
     @item = @category.items.new(item_params)
-    @item.container = Container.find(params[:container_id])
     @item.container_type = params[:container_type]
     #This container type refrs to the param name we put in the Items show view
     if @item.save
@@ -31,12 +31,14 @@ class ItemsController < ApplicationController
 
   def shoppinglist
     @item = Item.new
+    @category = Category.find(params[:id])
   end
 
   def edit
   end
 
   def update
+    @category = Category.find(params[:id])
   end
 
   def destroy
@@ -47,6 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def get_category
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
   end
 end

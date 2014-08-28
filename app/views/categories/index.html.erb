@@ -60,26 +60,9 @@
 </div>
 
 
-
 <% current_group.each do |g| %>
 <%= g.name %>
 <% end %>
-<!-- angular -->
-
-<h1>Anagram of Palindrome Checker</h1>
-
-<input style="font-size:40px;" type="text" ng-model="teststring" ng-class="{is_anagram: data==1, not_anagram: data==0, no_entry: data==-1}" ng-change="is_anagram()"/>
-{{data}}
-
-<!-- modal -->
-
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
 
 <script>
 angular.module('WefridgeratorApp', []).controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
@@ -139,7 +122,7 @@ window.onload = function() {
 		console.log("dropped " + data);
 		console.log($scope.dropZoneLink);
 		//window.location.href = e.dataTransfer.getData('text');
-		window.location.href = $scope.dropZsoneLink;
+		window.location.href = $scope.dropZoneLink;
   	});
 
 	var dropZoneTwo = document.querySelector('#drop-target-two');
