@@ -27,12 +27,9 @@
 			<ul id="drag-elements">
 
 
+<% @container.categories.each do |category| %>
 
-	<% @categories.each do |c| %> 
-
-	<% @category = c %>
-
-<li draggable="true"><%= link_to c.name, new_category_item_path(c), modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg" %></li>
+<li draggable="true"><%= link_to category.name, new_category_item_path(category), modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg" %> <%= category.container.id %></li>
 	
 
 

@@ -3,6 +3,7 @@ class ContainersController < ApplicationController
 
   def index
     @containers = Container.all
+    @group = Group.find(params[:group_id])
   end
 
   def show

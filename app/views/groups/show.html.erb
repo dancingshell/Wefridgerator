@@ -5,7 +5,7 @@
 <%= @group.passcode %>
 <%= @group.name %>
 
-<%= @group.containers.first %>
+<%= link_to @group.containers.first, group_containers_path(@group) %>
 <!-- Kaitlin tricked the system by going into the array which is containers, but there is only one. So it displays the first which is the only one! -->
 
 <%= link_to "Add Container",new_group_container_path(@group) %>

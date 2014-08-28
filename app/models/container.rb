@@ -3,7 +3,8 @@ class Container < ActiveRecord::Base
  
   has_many :arts
   has_many :receipts
-  has_many :items
-  has_many :categories, through: :items
+  has_many :categories
+  has_many :items, through: :categories
+  
   
 end

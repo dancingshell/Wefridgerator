@@ -1,2 +1,6 @@
 <h1>Items#index</h1>
 <p>Find me in app/views/items/index.html.erb</p>
+
+<% @items.each do |item| %>
+  <li><strong><%= item.name %></strong> -- Expires: <%= item.exp_date %> in the <%= item.container_type %></li>
+<% end %>

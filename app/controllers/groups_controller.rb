@@ -17,8 +17,11 @@ class GroupsController < ApplicationController
     @group.owner = current_user
     @group.passcode = get_passcode
     if @group.save
-      Container.create!(group: @group)
+
+      @container = Container.create!(group: @group)
       #The first group refers to the group_id for the container and the second group refers to the group being created
+      make_categories(@container)
+
       redirect_to group_path(@group)
     else
       redirect_to new_group_path
@@ -41,8 +44,6 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name, :passcode, :owner)
   end
 
-
-
   def get_passcode
     all_passcodes = []
     # makes an array with all passcodes 
@@ -64,6 +65,51 @@ class GroupsController < ApplicationController
       return rand_num(existing_passcodes) 
     end
     group_passcode
+  end
+
+  def make_categories(container_id)
+    categories = Category.create([
+      { name: "Milk", container: container_id
+      },
+      { name: "Eggs", container: container_id
+      },
+      { name: "Cheese", container: container_id
+      },
+      { name: "Meat", container: container_id
+      },
+      { name: "Fish", container: container_id
+      },
+      { name: "Vegetables", container: container_id
+      },
+      { name: "Fruit", container: container_id
+      },
+      { name: "Leftovers", container: container_id
+      },
+      { name: "Juice", container: container_id
+      },
+      { name: "Dairy(other)", container: container_id
+      },
+      { name: "Alcohol", container: container_id
+      },
+      { name: "Beverages(other)", container: container_id
+      },
+      { name: "Frozen", container: container_id
+      },
+      { name: "Dessert", container: container_id
+      },
+      { name: "Condiments", container: container_id
+      },
+      { name: "Bulk/Dried Goods", container: container_id
+      },
+      { name: "Canned Goods", container: container_id
+      },
+      { name: "Sauces", container: container_id
+      },
+      { name: "Spices", container: container_id
+      },
+      { name: "Other", container: container_id
+      },
+    ])
   end
 
 end

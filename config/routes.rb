@@ -18,7 +18,7 @@ Wefridgerator::Application.routes.draw do
   end
 
   resources :containers do
-    resources :items
+    resources :categories
     resources :arts
   end
 
