@@ -28,6 +28,11 @@
 }
   
 </style>
+
+
+
+
+
 <h1 ng-bind="dropZoneLink"></h1>
 
 	<div class="container">
@@ -35,12 +40,20 @@
 		<div id="dd-elements" class="clearfix">
 			<ul id="drag-elements">
 
-<p ng-init="cats = <%= @container.categories.all.map(&:id) %>">NOT{{cats}}</p>
+<% @category_array = @container.categories.all.map { |f|
+  { id: f.id, name: f.name}
+} %>
+
+
+
+<p ng-init="cats = <%= @category_array.to_json %>"></p>
 <%# @container.categories.each do |category| %>
 
-<a ng-repeat="c in cats" ng-href='{{dropZoneLink}}', modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg"><li draggable="true" ng-mousedown="setCategory(c)">{{c}}
+<a ng-repeat="c in cats track by $index" ng-href='{{dropZoneLink}}', modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg"><li draggable="true" ng-mousedown="setCategory(c.id)">{{c.name}}
 </li></a>
 	
+
+
 
 
 
