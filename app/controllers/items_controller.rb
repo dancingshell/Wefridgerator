@@ -14,9 +14,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = @category.items.new(item_params)
+    @item.container = Container.find(params[:container_id])
     @item.container_type = params[:container_type]
     #This container type refrs to the param name we put in the Items show view
     if @item.save
+      
       redirect_to category_item_path(@category, @item)
     else
       render 'new'

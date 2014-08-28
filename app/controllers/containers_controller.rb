@@ -8,6 +8,7 @@ class ContainersController < ApplicationController
 
   def show
     @container = Container.find(params[:id])
+    @categories = Category.all 
   end
 
   def new
