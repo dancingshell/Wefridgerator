@@ -12,6 +12,10 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def new_item
+    @item = Item.new
+  end
+
   def create
     @item = @category.items.new(item_params)
     @item.container = Container.find(params[:container_id])
@@ -23,6 +27,10 @@ class ItemsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def shoppinglist
+    @item = Item.new
   end
 
   def edit
@@ -39,6 +47,6 @@ class ItemsController < ApplicationController
   end
 
   def get_category
-    @category = Category.find(params[:category_id])
+    @category = Category.find(params[:id])
   end
 end

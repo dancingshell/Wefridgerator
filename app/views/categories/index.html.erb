@@ -28,41 +28,36 @@
 }
   
 </style>
-
+<h1 ng-bind="dropZoneLink"></h1>
 
 	<div class="container">
 
 		<div id="dd-elements" class="clearfix">
 			<ul id="drag-elements">
 
+<p ng-init="cats = <%= @container.categories.all.map(&:id) %>">NOT{{cats}}</p>
+<%# @container.categories.each do |category| %>
 
-<% @container.categories.each do |category| %>
-
-
-
-<li draggable="true"><%= link_to category.name, new_category_item_path(category), modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg" %> <%= category.container.id %></li>
+<a ng-repeat="c in cats" ng-href='{{dropZoneLink}}', modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg"><li draggable="true" ng-mousedown="setCategory(c)">{{c}}
+</li></a>
 	
 
 
 
-	 <% end %>
+	 <%# end %>
 
-	<div id="result"></div>
-	<div id="drop-target-one" >
+<div class="row">
+	<div id="drop-target-one"class="col-md-4">
 		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
 		</div>
 
 	</div>
 
-<br>
-
-
-	<div id="result"></div>
-	<div id="drop-target-two" >
+	<div id="drop-target-two" class="col-md-4 col-md-offset-4">
 		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
 		</div>
-
 	</div>
+</div>
 
 
 
@@ -86,29 +81,25 @@
   </div>
 </div>
 
-
-
 <script>
+angular.module('WefridgeratorApp', []).controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
+
 window.onload = function() {
 
-	/**
-	*
-	*	Demo 1: Elements
-	*
-	*/
-	var dropZoneOne = document.querySelector('#drop-target-two');
+	$scope.setCategory = function(category){
+		$scope.categorySelected = category;
+	}
+
+	var dropZoneOne = document.querySelector('#drop-target-one');
 	var dragElements = document.querySelectorAll('#drag-elements li');
 	var elementDragged = null;
 
 	for (var i = 0; i < dragElements.length; i++) {
-
 		// Event Listener for when the drag interaction starts.
 		dragElements[i].addEventListener('dragstart', function(e) {
 			e.dataTransfer.effectAllowed = 'move';
-
 			elementDragged = this;
 		});
-
 		// Event Listener for when the drag interaction finishes.
 		dragElements[i].addEventListener('dragend', function(e) {
 			elementDragged = null;
@@ -120,7 +111,6 @@ window.onload = function() {
 		if (e.preventDefault) {
 			e.preventDefault();
 		}
-
 		e.dataTransfer.dropEffect = 'move';
 
 		return false;
@@ -142,32 +132,26 @@ window.onload = function() {
 		if (e.preventDefault) e.preventDefault(); 
   	if (e.stopPropagation) e.stopPropagation(); 
 
-
   	this.className = "";
-		window.location.href = e.dataTransfer.getData('text');
-
+		
+		// $scope.dropZoneLink = "<%#= new_category_item_path($scope.category) %>";
+		$scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
 		console.log("dropped " + data);
+		console.log($scope.dropZoneLink);
+		//window.location.href = e.dataTransfer.getData('text');
+		window.location.href = $scope.dropZsoneLink;
   	});
 
-
-
-
-
-
-
-var dropZoneTwo = document.querySelector('#drop-target-one');
+	var dropZoneTwo = document.querySelector('#drop-target-two');
 	var dragElements = document.querySelectorAll('#drag-elements li');
 	var elementDragged = null;
 
 	for (var i = 0; i < dragElements.length; i++) {
-
 		// Event Listener for when the drag interaction starts.
 		dragElements[i].addEventListener('dragstart', function(e) {
 			e.dataTransfer.effectAllowed = 'move';
-
 			elementDragged = this;
 		});
-
 		// Event Listener for when the drag interaction finishes.
 		dragElements[i].addEventListener('dragend', function(e) {
 			elementDragged = null;
@@ -201,97 +185,17 @@ var dropZoneTwo = document.querySelector('#drop-target-one');
 		if (e.preventDefault) e.preventDefault(); 
   	if (e.stopPropagation) e.stopPropagation(); 
 
-
   	this.className = "";
-		window.location.href = e.dataTransfer.getData('text') + 2;
-
+		
+		// $scope.dropZoneLink = "<%#= new_category_item_path($scope.category) %>";
+		$scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
 		console.log("dropped " + data);
+		console.log($scope.dropZoneLink);
+		//window.location.href = e.dataTransfer.getData('text');
+		window.location.href = $scope.dropZoneLink;
   	});
-
-
-
-
-
-
-
-
-
-  	// dropZoneTwo.addEventListener('drop', function loadPath(e){
-  	// 	window.location.href = e.dataTransfer.setData('text', this.id);
-  	// }); 
-
- 
-
-		
-
-
-	// 	// Remove the element from the list.
-	// 	return false;
-	// });
-
-
-
-
-	/**
-	*
-	*	Demo 2: Text Files
-	*
-	*/
-	// var dropZoneTwo = document.querySelector('#dd-files');
-	// var fileContentPane = document.querySelector('#file-content');
-
-	// // Event Listener for when the dragged file is over the drop zone.
-	// dropZoneTwo.addEventListener('dragover', function(e) {
-	// 	if (e.preventDefault) e.preventDefault(); 
-	// 	if (e.stopPropagation) e.stopPropagation(); 
-
-	// 	e.dataTransfer.dropEffect = 'copy';
-	// });
-
-	// // Event Listener for when the dragged file enters the drop zone.
-	// dropZoneTwo.addEventListener('dragenter', function(e) {
-	// 	this.className = "over";
-	// });
-
-	// // Event Listener for when the dragged file leaves the drop zone.
-	// dropZoneTwo.addEventListener('dragleave', function(e) {
-	// 	this.className = "";
-	// });
-
-	// // Event Listener for when the dragged file dropped in the drop zone.
-	// dropZoneTwo.addEventListener('drop', function(e) {
-	// 	if (e.preventDefault) e.preventDefault(); 
-	// 	if (e.stopPropagation) e.stopPropagation(); 
-
-	// 	this.className = "";
-
-	// 	var fileList = e.dataTransfer.files;
-
-	// 	if (fileList.length > 0) {
-	// 		readTextFile(fileList[0]);
-	// 	}
-	// });
-
-
-	// Read the contents of a file.
-	// function readTextFile(file) {
-	// 	var reader = new FileReader();
-
-	// 	reader.onloadend = function(e) {
-	// 		if (e.target.readyState == FileReader.DONE) {
-	// 			var content = reader.result;
-	// 			fileContentPane.innerHTML = "File: " + file.name + "\n\n" + content;
-	// 		}
-	// 	}
-		
- //    reader.readAsBinaryString(file);
-	// }
-	
-};
-
-
-
-
+	};
+}]);
 
 </script>
 

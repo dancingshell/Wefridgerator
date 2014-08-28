@@ -7,6 +7,8 @@ Wefridgerator::Application.routes.draw do
 
   resources :static_pages 
 
+
+  get "categories/:id/items/new_item" => "items#new_item", as: :new_container_item
   get "categories/:id/items/new_sl" => "items#shoppinglist", as: :new_shopping_list_item
   get "categories/api/"  => "categories#nothing"
   get "categories/api/:s" => "categories#check_anagram"
@@ -24,7 +26,7 @@ Wefridgerator::Application.routes.draw do
   end
 
   resources :categories do
-    resources :items 
+    resources :items, only: [:index, :show, :create, :edit , :update, :destroy]
   end
 
   resources :chat_rooms do
