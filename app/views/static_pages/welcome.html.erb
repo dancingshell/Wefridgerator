@@ -1,6 +1,37 @@
-<div>
+  <div class="nav_bar">
+  </div>
+
   <div class="wefridge_bg text-center">
+  </div> 
+
+  <div class="content text-center">
+  <img src="WEFridgelogo.png">
+  	<h4> WELCOME TO REFRIDGERATOR </h4>
+	  	<p>
+	  	Refridgerator is the only place where people in 
+	  	shared living spaces can claim what they rightfully
+	  	own. Whether its left overs or milk, we want you to 
+	  	feel secure storing food in your fridge.  
+  </div> 
+
+  <div class="content2">
+  </div> 
+
+  <div class="content3">
   </div>
-  <div>
-  </div>
-</div>
+
+
+<h1>SIGN UP MOFO!</h1>
+
+<%= form_for @user do |f| %>
+	<%= f.text_field :first_name, placeholder: "First name dude go here" %>
+	<%= f.text_field :last_name, placeholder: "Last name dude go here" %>
+	<%= f.text_field :email, placeholder: "Email dude go here" %>
+	<%= f.password_field :password, placeholder: "Password dude go here" %>
+	<%= f.password_field :password_confirmation, placeholder: "Confirm firme dude go here" %>
+	<%= f.text_field :zipcode, placeholder: "Zipcode dude go here" %>
+
+	<%= f.submit "Submit HERE FOR FRDGES AND %*&*&" %>
+
+<% end %>
+

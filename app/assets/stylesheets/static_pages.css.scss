@@ -1,14 +1,76 @@
-// Place all the styles related to the static_pages controller here.
+// Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+	width: 1237px;
+	height: 3749px;
+}
+
+h4 {
+	font-color: gray;
+	font-size: 30px;
+	font-family: Helvetica;
+}
+
+p {
+	font-size: 18px;
+}
+
+.nav_bar {
+	background: url(WEfridge_logo.png);
+	background-repeat: no-repeat;
+	padding: 0 auto;
+	width: 970px;
+	height: 60px;
+	border-color: black;
+	border-width: 2px;
+	border-style: dotted;
+	margin: 0 auto;
+}
+
+.logo {
+	background: url(WEFridge_logo.png);
+
+}
 
 .wefridge_bg {
-  background: url(kitchen.png);
+  background: url(WEKitchen3.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 820px;
+  width: 960px;
+  height: 480px;
+  margin: 0 auto;
 }
 
+.content {
+	width: 970px;
+	height: 144px;
+	border-color: black;
+	border-width: 2px;
+	border-style: dotted;
+	margin: 0 auto;
+}
+
+.content2 {
+	width: 970px;
+	height: 450px;
+	border-color: black;
+	border-width: 2px;
+	border-style: dotted;
+	margin: 0 auto;
+}
+
+.content3{
+	width: 970px;
+	height: 704px;
+	border-color: black;
+	border-width: 2px;
+	border-style: dotted;
+	margin: 0 auto;
+}
+
+/*
+1181x67*/
