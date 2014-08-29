@@ -12,28 +12,29 @@ class ItemsController < ApplicationController
   #   @item = Item.new
   # end
 
-  def new_item
+  def new_container_item
+    @item = Item.new
+    @category = Category.find(params[:id])
+  end
+
+  def new_shopping_list_item
     @item = Item.new
     @category = Category.find(params[:id])
   end
 
   def create
     @item = @category.items.new(item_params)
+    @item.user = current_user
     @item.container_type = params[:container_type]
-    # raise @item.container_type.inspect
+    #This container type refers to the param name we put in the Items show view
     @item.container_type = "Shopping List" if @item.container_type == nil
-    #This container type refrs to the param name we put in the Items show view
+    #Assigns container type to items dropped in the shopping list
     if @item.save
       
       redirect_to category_item_path(@category, @item)
     else
       render 'new'
     end
-  end
-
-  def shoppinglist
-    @item = Item.new
-    @category = Category.find(params[:id])
   end
 
   def edit
@@ -47,7 +48,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :category_id, :container_id, :user_id, :exp_date, :quantity, :is_public)
+    params.require(:item).permit(:name, :category_id, :container_id, :user_id, :exp_date, :quantity, :is_private)
   end
 
   def get_category

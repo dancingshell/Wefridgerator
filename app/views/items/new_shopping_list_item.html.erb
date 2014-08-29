@@ -1,8 +1,10 @@
+<h1>Add new <%= @category.name %> to your shopping list!</h1>
+
 <%= form_for @item, {url: category_items_path(@category)} do |f| %>
 <%= f.text_field :name, placeholder: "Item name" %>
 <%= f.number_field :quantity, placeholder: "Quantity" %>
-<%= f.date_field :exp_date, placeholder: "Expiration Date" %> 
-<%= f.select :container_type, [["Refridgerator"],["Freezer"],["Pantry"]], {}, {name: "container_type", default: "select a container"} %>
+<%= f.check_box :is_private %> Make item private? (only you will see items in your private list)<br>
+<%# f.select :container_type, [["Shopping List"]], {}, {name: "container_type"} %>
 <!-- name is the name of the parameter and it allows you to call that paramter from the controller. The paramter would be the container_type from that item! -->
 <%= f.submit %>
 <% end %>
