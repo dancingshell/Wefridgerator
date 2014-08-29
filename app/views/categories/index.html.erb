@@ -10,7 +10,7 @@
 			<div class="container">
 			<div class="row container">
 		
-					<a ng-repeat="c in cats track by $index" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
+					<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
 						<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
 							<img src="/assets/{{c.image}}.png">
 							{{c.name}}

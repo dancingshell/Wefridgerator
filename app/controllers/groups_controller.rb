@@ -71,45 +71,45 @@ class GroupsController < ApplicationController
 
   def make_categories(container_id)
     categories = Category.create([
-      { name: "Milk", container: container_id, image: "Milk"
+      { name: "Milk", container: container_id, image: "milk"
       },
-      { name: "Eggs", container: container_id, image: "Eggs"
+      { name: "Eggs", container: container_id, image: "eggs"
       },
-      { name: "Cheese", container: container_id, image: "Cheese"
+      { name: "Cheese", container: container_id, image: "cheese"
       },
-      { name: "Meat", container: container_id, image: "Meat"
+      { name: "Meat", container: container_id, image: "meat"
       },
-      { name: "Fish", container: container_id, image: "Fish"
+      { name: "Fish", container: container_id, image: "fish"
       },
-      { name: "Vegetable", container: container_id, image: "Vegetable"
+      { name: "Vegetable", container: container_id, image: "vegetable"
       },
-      { name: "Fruit", container: container_id, image: "Fruit"
+      { name: "Fruit", container: container_id, image: "fruit"
       },
-      { name: "Leftovers", container: container_id, image: "Leftovers"
+      { name: "Leftovers", container: container_id, image: "leftovers"
       },
-      { name: "Juice", container: container_id, image: "Juice"
+      { name: "Juice", container: container_id, image: "juice"
       },
-      { name: "Dairy", container: container_id, image: "Dairy"
+      { name: "Dairy", container: container_id, image: "dairy"
       },
-      { name: "Alcohol", container: container_id, image: "Alcohol"
+      { name: "Liquor", container: container_id, image: "liquor"
       },
-      { name: "Beverage", container: container_id, image: "Beverage"
+      { name: "Beverage", container: container_id, image: "beverage"
       },
-      { name: "Frozen", container: container_id, image: "Frozen"
+      { name: "Frozen", container: container_id, image: "frozen"
       },
-      { name: "Dessert", container: container_id, image: "Dessert"
+      { name: "Dessert", container: container_id, image: "dessert"
       },
-      { name: "Condiment", container: container_id, image: "Condiment"
+      { name: "Condiment", container: container_id, image: "condiment"
       },
-      { name: "Bulk/Dried", container: container_id, image: "Bulk"
+      { name: "Bulk/Dried", container: container_id, image: "bulk"
       },
-      { name: "Canned", container: container_id, image: "Canned"
+      { name: "Canned", container: container_id, image: "canned"
       },
-      { name: "Sauce", container: container_id, image: "Sauce"
+      { name: "Sauce", container: container_id, image: "sauce"
       },
-      { name: "Spice", container: container_id, image: "Spice"
+      { name: "Spice", container: container_id, image: "spice"
       },
-      { name: "Other", container: container_id, image: "Other"
+      { name: "Other", container: container_id, image: "other"
       },
     ])
  
