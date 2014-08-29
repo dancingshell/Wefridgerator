@@ -4,7 +4,7 @@
 		<div id="drag-elements">
 
 			<% @category_array = @container.categories.all.map { |f|
-				{ id: f.id, name: f.name} } %>
+				{ id: f.id, name: f.name, image: f.image} } %>
 
 			<p ng-init="cats = <%= @category_array.to_json %>"></p>
 			<div class="container">
@@ -12,7 +12,8 @@
 		
 					<a ng-repeat="c in cats track by $index" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
 						<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
-							<img ng-src="{{c.image}}">
+							<img src="/assets/{{c.image}}.png">
+							{{c.name}}
 						</div>
 					</a>
 			</div>

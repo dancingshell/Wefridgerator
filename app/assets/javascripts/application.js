@@ -24,7 +24,6 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
     $scope.setCategory = function(category){
       $scope.categorySelected = category;
     }
-    
 
     var dropZoneOne = document.querySelector('#drop-target-one');
     var dragElements = document.querySelectorAll('#drag-elements li');
