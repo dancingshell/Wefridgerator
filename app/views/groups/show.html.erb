@@ -5,7 +5,7 @@
 
 
 
-<%= link_to @group.name, container_categories_url(@container.first) %>
+<%= link_to( @group.name, container_categories_url(@container.first), data: { no_turbolink: true}) %>
 <!-- Kaitlin tricked the system by going into the array which is containers, but there is only one. So it displays the first which is the only one! -->
 
 <%= link_to "Invite friends", new_group_user_group_path(@group) %>
