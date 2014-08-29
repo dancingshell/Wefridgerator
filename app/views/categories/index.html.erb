@@ -1,198 +1,42 @@
-
-<style>
-.fridge-drop-container{
-	width: 100%;
-	height: 100%;
-}
-#drop-target-one {
-	width: 180px;
-	height: 340px;
-	border: 2px solid red;
-}
-
-#drop-target-two {
-	width: 180px;
-	height: 340px;
-	border: 2px solid red;
-}
-
-
-.is_anagram {
-  background: green;
-}
-.not_anagram {
-  background: red;
-}
-.no_entry{
-	background: white;
-}
-  
-</style>
-
-
-
-
-
-<h1 ng-bind="dropZoneLink"></h1>
+<div ng-controller="dragNdrop">
+	<h1 ng-bind="dropZoneLink"></h1>
 
 	<div class="container">
 
 		<div id="dd-elements" class="clearfix">
 			<ul id="drag-elements">
 
-<% @category_array = @container.categories.all.map { |f|
-  { id: f.id, name: f.name}
-} %>
+				<% @category_array = @container.categories.all.map { |f|
+					{ id: f.id, name: f.name} } %>
+
+				<p ng-init="cats = <%= @category_array.to_json %>"></p>
+
+				<a ng-repeat="c in cats track by $index" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
+					<li draggable="true" ng-mousedown="setCategory(c.id)">{{c.name}}
+					</li>
+				</a>
+			</ul>
+		</div>
+	</div>
+		
 
 
-
-<p ng-init="cats = <%= @category_array.to_json %>"></p>
-<%# @container.categories.each do |category| %>
-
-<a ng-repeat="c in cats track by $index" ng-href='{{dropZoneLink}}', modal: true, dataToggle:"modal", dataTarget:".bs-example-modal-lg"><li draggable="true" ng-mousedown="setCategory(c.id)">{{c.name}}
-</li></a>
-	
-
-
-
-
-
-	 <%# end %>
-
-<div class="row">
-	<div id="drop-target-one"class="col-md-4">
+	<div id="drop-target-one">
 		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
 		</div>
 
 	</div>
 
-	<div id="drop-target-two" class="col-md-4 col-md-offset-4">
-		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
+	<div id="drop-target-two">
+		<div class="fridge-drop-container"><%= image_tag "http://www.ryanjwhite.com/dev/logo.jpg" %>
 		</div>
 	</div>
+
+
+
+	<% current_group.each do |g| %>
+	<%= g.name %>
+	<% end %>
 </div>
-
-
-<% current_group.each do |g| %>
-<%= g.name %>
-<% end %>
-
-<script>
-angular.module('WefridgeratorApp', []).controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
-
-window.onload = function() {
-
-	$scope.setCategory = function(category){
-		$scope.categorySelected = category;
-	}
-
-	var dropZoneOne = document.querySelector('#drop-target-one');
-	var dragElements = document.querySelectorAll('#drag-elements li');
-	var elementDragged = null;
-
-	for (var i = 0; i < dragElements.length; i++) {
-		// Event Listener for when the drag interaction starts.
-		dragElements[i].addEventListener('dragstart', function(e) {
-			e.dataTransfer.effectAllowed = 'move';
-			elementDragged = this;
-		});
-		// Event Listener for when the drag interaction finishes.
-		dragElements[i].addEventListener('dragend', function(e) {
-			elementDragged = null;
-		});
-	};
-
-	// Event Listener for when the dragged element is over the drop zone.
-	dropZoneOne.addEventListener('dragover', function(e) {
-		if (e.preventDefault) {
-			e.preventDefault();
-		}
-		e.dataTransfer.dropEffect = 'move';
-
-		return false;
-	});
-
-	// Event Listener for when the dragged element enters the drop zone.
-	dropZoneOne.addEventListener('dragenter', function(e) {
-		this.className = "over";
-	});
-
-	// Event Listener for when the dragged element leaves the drop zone.
-	dropZoneOne.addEventListener('dragleave', function(e) {
-		this.className = "";
-	});
-
-	// Event Listener for when the dragged element dropped in the drop zone.
-	dropZoneOne.addEventListener('drop', function(e) {
-	var data = e.dataTransfer.getData('text');
-		if (e.preventDefault) e.preventDefault(); 
-  	if (e.stopPropagation) e.stopPropagation(); 
-
-  	this.className = "";
-		
-		// $scope.dropZoneLink = "<%#= new_category_item_path($scope.category) %>";
-		$scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
-		console.log("dropped " + data);
-		console.log($scope.dropZoneLink);
-		//window.location.href = e.dataTransfer.getData('text');
-		window.location.href = $scope.dropZoneLink;
-  	});
-
-	var dropZoneTwo = document.querySelector('#drop-target-two');
-	var dragElements = document.querySelectorAll('#drag-elements li');
-	var elementDragged = null;
-
-	for (var i = 0; i < dragElements.length; i++) {
-		// Event Listener for when the drag interaction starts.
-		dragElements[i].addEventListener('dragstart', function(e) {
-			e.dataTransfer.effectAllowed = 'move';
-			elementDragged = this;
-		});
-		// Event Listener for when the drag interaction finishes.
-		dragElements[i].addEventListener('dragend', function(e) {
-			elementDragged = null;
-		});
-	};
-
-	// Event Listener for when the dragged element is over the drop zone.
-	dropZoneTwo.addEventListener('dragover', function(e) {
-		if (e.preventDefault) {
-			e.preventDefault();
-		}
-
-		e.dataTransfer.dropEffect = 'move';
-
-		return false;
-	});
-
-	// Event Listener for when the dragged element enters the drop zone.
-	dropZoneTwo.addEventListener('dragenter', function(e) {
-		this.className = "over";
-	});
-
-	// Event Listener for when the dragged element leaves the drop zone.
-	dropZoneTwo.addEventListener('dragleave', function(e) {
-		this.className = "";
-	});
-
-	// Event Listener for when the dragged element dropped in the drop zone.
-	dropZoneTwo.addEventListener('drop', function(e) {
-	var data = e.dataTransfer.getData('text');
-		if (e.preventDefault) e.preventDefault(); 
-  	if (e.stopPropagation) e.stopPropagation(); 
-
-  	this.className = "";
-		
-		// $scope.dropZoneLink = "<%#= new_category_item_path($scope.category) %>";
-		$scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_sl";
-		console.log("dropped " + data);
-		console.log($scope.dropZoneLink);
-		//window.location.href = e.dataTransfer.getData('text');
-		window.location.href = $scope.dropZoneLink;
-  	});
-	};
-}]);
-
-</script>
 
 
