@@ -42,8 +42,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-      @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
+   
     if @item.update_attributes(item_params)
+      @item.update_attribute(:container_type, change_container(@item))
       redirect_to category_items_path(@category)
     else
       render 'edit'
@@ -77,7 +79,6 @@ class ItemsController < ApplicationController
 
     if item.container_type == "Refridgerator" || item.container_type == "Freezer" || item.container_type == "Pantry"
       item.container_type = "Shopping List"
-
     else
       item.container_type = params[:container_type]
     end
