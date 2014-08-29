@@ -1,2 +1,8 @@
-Test
-<%= @category.name %>
+<%= form_for @item, {url: category_items_path(@category)} do |f| %>
+<%= f.text_field :name, placeholder: "Item name" %>
+<%= f.number_field :quantity, placeholder: "Quantity" %>
+<% f.date_field :exp_date, placeholder: "Expiration Date" %> 
+<%# f.select :container_type, [["Shopping List"]], {}, {name: "container_type"} %>
+<!-- name is the name of the parameter and it allows you to call that paramter from the controller. The paramter would be the container_type from that item! -->
+<%= f.submit %>
+<% end %>

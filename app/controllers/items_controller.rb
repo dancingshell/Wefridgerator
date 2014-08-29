@@ -20,6 +20,8 @@ class ItemsController < ApplicationController
   def create
     @item = @category.items.new(item_params)
     @item.container_type = params[:container_type]
+    # raise @item.container_type.inspect
+    @item.container_type = "Shopping List" if @item.container_type == nil
     #This container type refrs to the param name we put in the Items show view
     if @item.save
       
