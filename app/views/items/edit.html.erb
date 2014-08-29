@@ -1,2 +1,13 @@
 <h1>Items#edit</h1>
 <p>Find me in app/views/items/edit.html.erb</p>
+
+<h1>Add <%= @category.name %> item to your "Refridgerator"!</h1>
+
+<%= form_for @item, {url: category_item_path(@category, @item)} do |f| %>
+<%= f.text_field :name %>
+<%= f.number_field :quantity, placeholder: "Quantity" %>
+<%= f.date_field :exp_date, placeholder: "Expiration Date" %> 
+<%= f.select :container_type, [["Refridgerator"],["Freezer"],["Pantry"]], {}, {name: "container_type", default: "select a container"} %>
+<!-- name is the name of the parameter and it allows you to call that paramter from the controller. The paramter would be the container_type from that item! -->
+<%= f.submit %>
+<% end %>

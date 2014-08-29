@@ -26,7 +26,7 @@ Wefridgerator::Application.routes.draw do
   end
 
   resources :categories do
-    resources :items, only: [:index, :show, :create, :edit , :destroy]
+    resources :items, only: [:index, :show, :create, :edit, :update, :destroy]
   end
 
   resources :chat_rooms do

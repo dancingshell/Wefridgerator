@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :get_category, only: [:index, :show, :edit, :create, :destroy]
+  before_action :get_category, only: [:index, :show, :edit, :create, :update, :destroy]
   def index
     @items = Item.all
   end
@@ -41,17 +41,27 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def update
+      @item = Item.find(params[:id])
+    if @item.update_attributes(item_params)
+      redirect_to category_items_path(@category)
+    else
+      render 'edit'
+    end
+  end
+
   def update_item
     @category = Category.find(params[:category_id])
     @item = Item.find(params[:id])
     @item.update_attribute(:container_type, change_container(@item))
     #change_container(@item)
-    redirect_to category_item_path(@category, @item)
+    redirect_to category_items_path(@category)
     end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
+    redirect_to category_items_path(@category)
   end
 
   private
