@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829040014) do
+ActiveRecord::Schema.define(version: 20140829181734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20140829040014) do
 
   create_table "items", force: true do |t|
     t.string   "name"
-    t.datetime "exp_date"
     t.integer  "quantity"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -72,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140829040014) do
     t.integer  "user_id"
     t.string   "container_type"
     t.boolean  "is_private"
+    t.date     "exp_date"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree

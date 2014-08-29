@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @container = Container.where(group: @group)
   end
 
   def new
@@ -15,6 +16,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.owner = current_user
+    @user_group = UserGroup.create!(user: current_user, group: @group)
     @group.passcode = get_passcode
     if @group.save
 

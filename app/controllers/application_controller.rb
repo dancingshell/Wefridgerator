@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-  helper_method :current_group
+  helper_method :current_groups
 
   def current_user
   	@current_user ||= User.where(:id => session[:user_id]).first 
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   	#.first will refer to the id 
   end
 
-  def current_group
+  def current_groups
     #Find all the user groups of the current_user
     user_groups = UserGroup.where(user_id: current_user.id.to_s)
     #Create an array of all the group_ids for those user_groups

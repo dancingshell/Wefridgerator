@@ -1,4 +1,12 @@
 <% if current_user %>
+
+<% current_groups.each do |g| %>
+ 
+    <li><%= link_to g.name, group_path(g) %></li>
+
+<% end %>
+
+
   <br><%= link_to "Create group!", new_group_path %>
 <% else %>
   <%= link_to "log in", new_session_path %>

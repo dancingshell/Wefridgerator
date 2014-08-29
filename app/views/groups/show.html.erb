@@ -2,16 +2,13 @@
 <% if @group.owner == current_user.id.to_s %>
 
 <h1>Welcome to <%= @group.name %></h1>
-<%= @group.passcode %>
-<%= @group.name %>
 
-<%= link_to @group.containers.first, group_containers_path(@group) %>
+
+
+<%= link_to @group.name, container_categories_url(@container.first) %>
 <!-- Kaitlin tricked the system by going into the array which is containers, but there is only one. So it displays the first which is the only one! -->
 
-<%= link_to "Add Container",new_group_container_path(@group) %>
 <%= link_to "Invite friends", new_group_user_group_path(@group) %>
 <% else %>
-
-
 
 <% end %>
