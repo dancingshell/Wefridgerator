@@ -1,6 +1,6 @@
 <h1>Containers#index</h1>
 <% @group.containers.each do |container| %>
-  <%= link_to container.id, container_categories_path(container) %>
+  <%= link_to( container.id, container_categories_path(container), data: { no_turbolink: true }) %>
 <% end %>
 
 

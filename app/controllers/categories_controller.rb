@@ -1,8 +1,9 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
-    @item = Item.new
     @container = Container.find(params[:container_id])
+    @categories = Category.where(:container => @container)
+    @item = Item.new
+    
  
   end
 

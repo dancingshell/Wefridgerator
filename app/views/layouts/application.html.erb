@@ -8,6 +8,37 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+  <script> 
+    var congressApp = angular.module('congressApp',[])
+
+
+    congressApp.controller('Congress', ['$scope', 'SenateData',
+      function($scope, SenateData) {
+
+      $scope.senatordata = {};
+
+      SenateData.getData().then(function(json){
+        $scope.senatordata = json.data;
+        console.log(json.data);
+      });
+
+    }]);
+
+    // create factory for the members
+    congressApp.factory('SenateData', ['$http', function($http){
+      var senators = {};
+
+      senators.getData = function(){
+        var url = "http://localhost:3000/containers/5/categories"
+        var endpoint = url; 
+        return $http({ method: 'GET', url: endpoint });
+      };
+
+      return senators;
+
+    }]);
+    </script>
 </head>
 
 

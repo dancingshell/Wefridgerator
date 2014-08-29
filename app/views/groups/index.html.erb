@@ -1,9 +1,9 @@
 <h1>Groups#index</h1>
 <p>Find me in app/views/groups/index.html.erb</p>
 
-<% @groups.each do |g| %>
-  <% if g.owner == current_user%>
-    <li><%= link_to g.name, new_group_container_path(g) %></li>
-  <% end %>
+<% current_group.each do |g| %>
+ 
+    <li><%= link_to g.name, group_path(g) %></li>
+
 <% end %>
 <%= link_to "Make group", new_group_path %>
