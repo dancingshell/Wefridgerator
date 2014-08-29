@@ -38,20 +38,41 @@ class ItemsController < ApplicationController
   end
 
   def edit
+     @item = Item.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
+    @item = Item.find(params[:id])
+    if @item.update_attributes(id: params[:id])
+      change_container(@item)
+      redirect_to category_item_path(@category, @item)
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
   end
 
+  private
   def item_params
-    params.require(:item).permit(:name, :category_id, :container_id, :user_id, :exp_date, :quantity, :is_private)
+    params.require(:item).permit(:name, :category_id, :container_type, :user_id, :exp_date, :quantity, :is_private)
   end
 
   def get_category
     @category = Category.find(params[:category_id])
   end
+
+  def change_container(item)
+
+    if item.container_type == "Refridgerator" || item.container_type == "Freezer" || item.container_type == "Pantry"
+      item.container_type = "Shopping List"
+
+    else
+      item.container_type = params[:container_type]
+    end
+  end
+
 end
