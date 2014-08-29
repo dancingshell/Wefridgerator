@@ -6,5 +6,5 @@ Quantity: <%= @item.quantity %><br>
   Expiration Date: <%= @item.exp_date %><br>
 <% end %>
 Container Type: <%= @item.container_type %><br>
-Who put it in the fridge???: <%= @item.user.first_name %><br>
-private item??: <%= @item.is_private %><br> 
+Who put it in the <%= @item.container_type %> ???: <%= @item.user.first_name %><br>
+private item?!!!?: <%= @item.is_private %><br> 

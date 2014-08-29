@@ -1,21 +1,22 @@
 <div ng-controller="dragNdrop">
 	<h1 ng-bind="dropZoneLink"></h1>
+	<div id="dd-elements">
+		<div id="drag-elements">
 
-	<div class="container">
+			<% @category_array = @container.categories.all.map { |f|
+				{ id: f.id, name: f.name} } %>
 
-		<div id="dd-elements" class="clearfix">
-			<ul id="drag-elements">
-
-				<% @category_array = @container.categories.all.map { |f|
-					{ id: f.id, name: f.name} } %>
-
-				<p ng-init="cats = <%= @category_array.to_json %>"></p>
-
-				<a ng-repeat="c in cats track by $index" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
-					<li draggable="true" ng-mousedown="setCategory(c.id)">{{c.name}}
-					</li>
-				</a>
-			</ul>
+			<p ng-init="cats = <%= @category_array.to_json %>"></p>
+			<div class="container">
+			<div class="row container">
+		
+					<a ng-repeat="c in cats track by $index" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
+						<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
+							<img ng-src="{{c.image}}">
+						</div>
+					</a>
+			</div>
+			</div>
 		</div>
 	</div>
 		
