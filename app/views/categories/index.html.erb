@@ -1,3 +1,32 @@
+<style>
+
+#dropdown {
+background: white;
+
+border-radius: 15px;
+
+color: #333333;
+width: 100px;
+height: 0;
+overflow:hidden;
+left: 0;
+line-height: 20px;
+text-align:center;
+top: 30px;
+-webkit-transition: all .2s ease;
+-moz-transition: all .2s ease;
+-ms-transition: all .2s ease;
+-o-transition: all .2s ease;
+transition: all .2s ease;
+}
+#info:hover > #dropdown {
+display:block;
+left:0px;
+height:22px;
+}
+</style>
+
+
 <div ng-controller="dragNdrop">
 	<h1 ng-bind="dropZoneLink"></h1>
 	<div id="dd-elements">
@@ -12,14 +41,19 @@
 		
 					<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
 						<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
-							<img src="/assets/{{c.image}}.png">
-							{{c.name}}
+							<div id="info">	<img src="/assets/{{c.image}}.png">
+							<div id="dropdown">{{c.name}}</div>				
+						</div>
 						</div>
 					</a>
 			</div>
 			</div>
 		</div>
 	</div>
+
+	
+
+
 		
  
 	<div id="drop-target-one">
