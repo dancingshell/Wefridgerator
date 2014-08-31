@@ -13,13 +13,11 @@
 <body>
 
 <% if current_user %>
-	Hi, <%= current_user.first_name %>!
+	Hi, <%= current_user.first_name %>!<%= link_to "Log out", session_path, method: :delete, class: "pull-right" %>
 <% end %>
 
 <%= yield %>
-<% if current_user %>
-<%= link_to "Log out", session_path, method: :delete %>
-<% end %>
+
 
 </body>
 

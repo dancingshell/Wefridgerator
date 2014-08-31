@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :get_category, only: [:index, :show, :edit, :create, :update, :destroy]
-  
+
   def index
     @items = Item.all
   end
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
     #Assigns container type to items dropped in the shopping list
     if @item.save
       
-      redirect_to category_item_path(@category, @item)
+      redirect_to category_items_path(@category)
     else
       render 'new'
     end
