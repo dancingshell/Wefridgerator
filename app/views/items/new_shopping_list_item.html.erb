@@ -1,4 +1,4 @@
-<h1>Add new <%= @category.name %> to your shopping list!</h1>
+<h1>Add new <%= @category.name %> to your shopping list! <img src="/assets/<%= @category.image %>.png"></h1>
 
 <%= form_for @item, {url: category_items_path(@category)} do |f| %>
 <%= f.text_field :name, placeholder: "Item name" %>

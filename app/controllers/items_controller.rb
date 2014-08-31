@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :get_category, only: [:index, :show, :edit, :create, :update, :destroy]
+  
   def index
     @items = Item.all
   end
@@ -7,10 +8,6 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
-
-  # def new
-  #   @item = Item.new
-  # end
 
   def new_container_item
     @item = Item.new
@@ -43,7 +40,6 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-   
     if @item.update_attributes(item_params)
       @item.update_attribute(:container_type, change_container(@item))
       redirect_to category_items_path(@category)
@@ -56,9 +52,10 @@ class ItemsController < ApplicationController
     @category = Category.find(params[:category_id])
     @item = Item.find(params[:id])
     @item.update_attribute(:container_type, change_container(@item))
+    @item.update_attribute(:exp_date, nil)
     #change_container(@item)
     redirect_to category_items_path(@category)
-    end
+  end
 
   def destroy
     @item = Item.find(params[:id])
@@ -76,7 +73,6 @@ class ItemsController < ApplicationController
   end
 
   def change_container(item)
-
     if item.container_type == "Refridgerator" || item.container_type == "Freezer" || item.container_type == "Pantry"
       item.container_type = "Shopping List"
     else

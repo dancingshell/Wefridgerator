@@ -71,7 +71,7 @@ class GroupsController < ApplicationController
 
   def make_categories(container_id)
     categories = Category.create([
-      { name: "Milk", container: container_id, image: "milk"
+      { name: "Dairy", container: container_id, image: "milk"
       },
       { name: "Eggs", container: container_id, image: "eggs"
       },
@@ -88,8 +88,6 @@ class GroupsController < ApplicationController
       { name: "Leftovers", container: container_id, image: "leftovers"
       },
       { name: "Juice", container: container_id, image: "juice"
-      },
-      { name: "Dairy", container: container_id, image: "dairy"
       },
       { name: "Liquor", container: container_id, image: "liquor"
       },

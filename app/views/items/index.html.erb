@@ -3,10 +3,11 @@
 
 <% @items.each do |item| %>
   <li><strong><%= item.name %></strong>
-    <% if item.exp_date %>  -- Expires: <%= item.exp_date %><% end %> in the <%= item.container_type %> <% if item.container_type == "Shopping List" %><%= link_to "Bought!", edit_category_item_path(@category, item), class: "btn btn-success" %> <% else %>
-    
+    <% if item.exp_date %> -- Expires: <%= item.exp_date.strftime("%A, %D") %><% end %> in the <%= item.container_type %>
+    <% if item.container_type == "Shopping List" %>
+      <%= link_to "Bought!", edit_category_item_path(@category, item), class: "btn btn-success" %>
+    <% else %>
       <%= link_to "Add to Shopping List", update_item_path(@category, item) ,method: :post, class: "btn btn-success"%>
-    
     <% end %>
     <%= link_to "Delete item...", category_item_path(@category, item), method: :delete, class: "btn btn-danger"%>
   </li>

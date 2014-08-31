@@ -1,34 +1,4 @@
-<style>
-
-#dropdown {
-background: white;
-
-border-radius: 15px;
-
-color: #333333;
-width: 100px;
-height: 0;
-overflow:hidden;
-left: 0;
-line-height: 20px;
-text-align:center;
-top: 30px;
--webkit-transition: all .2s ease;
--moz-transition: all .2s ease;
--ms-transition: all .2s ease;
--o-transition: all .2s ease;
-transition: all .2s ease;
-}
-#info:hover > #dropdown {
-display:block;
-left:0px;
-height:22px;
-}
-</style>
-
-
 <div ng-controller="dragNdrop">
-	<h1 ng-bind="dropZoneLink"></h1>
 	<div id="dd-elements">
 		<div id="drag-elements">
 
@@ -37,41 +7,31 @@ height:22px;
 
 			<p ng-init="cats = <%= @category_array.to_json %>"></p>
 			<div class="container">
-			<div class="row container">
-		
-					<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
-						<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
-							<div id="info">	<img src="/assets/{{c.image}}.png">
-							<div id="dropdown">{{c.name}}</div>				
-						</div>
-						</div>
-					</a>
+			<div class="row">
+				<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
+					<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
+						<div id="info">	<img src="/assets/{{c.image}}.png">
+						<div id="dropdown">{{c.name}}</div>				
+					</div>
+					</div>
+				</a>
 			</div>
 			</div>
 		</div>
-	</div>
-
-	
-
-
-		
- 
-	<div id="drop-target-one">
-		<div class="fridge-drop-container"><%= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-3 text-center">
+				<div id="drop-target-one"><p>Add to Kitchen</p>
+				<!-- <div class="fridge-drop-container"> --><%#= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
+				<!-- </div> -->
+				</div>
+			</div>
+			
+			<div class="col-md-3 text-center">
+				<div id="drop-target-two"><p>Add to Shopping List</p>
+				</div>
+			</div>
 		</div>
 
-	</div>
-
-	<div id="drop-target-two">
-		<div class="fridge-drop-container"><%= image_tag "http://www.ryanjwhite.com/dev/logo.jpg" %>
-		</div>
-	</div>
-
-
-
-	<% current_groups.each do |g| %>
-	<%= g.name %>
-	<% end %>
 </div>
 
 
