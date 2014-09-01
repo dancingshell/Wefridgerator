@@ -19,12 +19,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
   end
 
   def new
-    @category = Category.find(params[:id])
-    @item = Item.new
+    @category = Category.new
   end
 
   def create
@@ -52,6 +50,10 @@ class CategoriesController < ApplicationController
     else
       @items = Item.all
     end
+  end
+
+  def item_json
+    @items_json = render json: Item.all
   end
 
 end

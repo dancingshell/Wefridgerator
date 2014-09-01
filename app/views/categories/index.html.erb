@@ -3,6 +3,8 @@
 	<div id="dd-elements">
 		<div id="drag-elements">
 
+      <p ng-init="container = <%= @container.id %>"></p>
+
 			<% @category_array = @categories.all.map { |f|
 				{ id: f.id, name: f.name, image: f.image} } %>
 
@@ -32,8 +34,8 @@
 				</div>
 			</div>
 		</div>
-		</div>
-</div>
+	</div>
+
 
 <!-- modal for categories -->
 
@@ -87,4 +89,4 @@
   </div>
 </div>
 
-
+</div>
