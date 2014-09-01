@@ -11,27 +11,39 @@
 				<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
 					<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
 						<div id="info">	<img src="/assets/{{c.image}}.png">
-						<div id="dropdown">{{c.name}}</div>				
+						<div id="dropdown">{{c.name}}</div>	<a data-toggle="modal" data-target="#myModal" data-remote="<%= new_{{}}_item_path(c.id) %> #modal-edit-fields" class="btn btn-mini">Weigh out</a>			
 					</div>
 					</div>
 				</a>
 			</div>
 			</div>
-		</div>
+		</div> 
 		<div class="row">
 			<div class="col-md-3 col-md-offset-3 text-center">
-				<div id="drop-target-one"><p>Add to Kitchen</p>
+				<p class="container-title">Add to Kitchen</p><div id="drop-target-one">
 				<!-- <div class="fridge-drop-container"> --><%#= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
 				<!-- </div> -->
 				</div>
 			</div>
 			
 			<div class="col-md-3 text-center">
-				<div id="drop-target-two"><p>Add to Shopping List</p>
+				<p class="container-title">Add to Shopping List</p><div id="drop-target-two">
 				</div>
 			</div>
 		</div>
 
 </div>
 
+
+
+
+<div id="modal-new-item">
+    <%= form_for @item, :html => { :class => 'form-horizontal' } do |f| %>    <div class="control-group">
+        <%= f.label :customer_name, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.hidden_field :customer_id, :class => 'text_field', :id =>"cust_id" %>
+          <%= f.autocomplete_field :customer_name, autocomplete_customer_name_customers_path, :id_element => '#cust_id', :class => 'text_field ui-autocomplete-input' %>
+        </div>
+        <% end %>
+</div>
 

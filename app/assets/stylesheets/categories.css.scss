@@ -13,10 +13,11 @@
   min-width: 200px;
   height: 240px;
   margin: 0 auto;
-  p {
-    margin-top: 20px;
-    font-size: 18px;
-  }
+  
+}
+.container-title {
+  font-size: 20px;
+  color: white;
 }
 
 .over {
@@ -35,6 +36,7 @@
   background: white;
   border-radius: 15px;
   margin-top: 5px;
+  margin-bottom: 50px;
   color: #333333;
   width: 100px;
   height: 0;
