@@ -74,7 +74,8 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       console.log("dropped " + data);
       console.log($scope.dropZoneLink);
       //window.location.href = e.dataTransfer.getData('text');
-      window.location.href = $scope.dropZoneLink;
+      // window.location.href = $scope.dropZoneLink;
+      $('.modal').modal({remote: $scope.dropZoneLink});
       });
 
     var dropZoneTwo = document.querySelector('#drop-target-two');
@@ -127,7 +128,8 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       console.log("dropped " + data);
       console.log($scope.dropZoneLink);
       //window.location.href = e.dataTransfer.getData('text');
-      window.location.href = $scope.dropZoneLink;
+      // window.location.href = $scope.dropZoneLink;
+      $('.modal').modal({remote: $scope.dropZoneLink});
     });
   };
 }]);
