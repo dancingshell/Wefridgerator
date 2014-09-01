@@ -65,6 +65,15 @@
   </div>
   <div class="col-md-5 col-md-offset-1">
     <h1>Items in your shopping list</h1>
+    <div ng-repeat="item in itemData track by $index">
+      <li><b>{{item.name}}</b> in the {{item.containter_type}}
+        <a class="btn btn-success" ng-click="editModal(item.catergory_id, item)">Bought!</a>
+        <a class="btn btn-danger" href="category_item_path(item.category_id, item)" method="delete">Delete</a>
+      </li>
+    </div>
+
+
+
     <% @shopping_list_items.each do |item| %>
       <% if item.container_type == "Shopping List" %>
       <li><strong><%= item.name %></strong> in the <%= item.container_type %>

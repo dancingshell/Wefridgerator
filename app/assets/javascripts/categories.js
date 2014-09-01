@@ -8,10 +8,9 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       $scope.categorySelected = category;
     }
     console.log("this is the container: " + $scope.container);
-    $http.get('http://localhost:3000/containers/{{container}}/categories/api/items').success(function (thisdata) {
+    $http.get('http://localhost:3000/containers/{{container}}/categories/api/items').success(function (data) {
     //Convert data to array.
-      $scope.myData = angular.fromJson(angular.fromJson(thisdata)) 
-      console.log($scope.myData);
+      $scope.itemData = angular.fromJson(angular.fromJson(data));
     });
 
     var dropZoneOne = document.querySelector('#drop-target-one');

@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+
+
   def index
     @container = Container.find(params[:container_id])
     @categories = Category.where(:container => @container)
@@ -23,6 +25,7 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    @item = Item.new
   end
 
   def create
@@ -53,7 +56,8 @@ class CategoriesController < ApplicationController
   end
 
   def item_json
-    @items_json = render json: Item.all
+    @items = render json: Item.all
   end
+
 
 end
