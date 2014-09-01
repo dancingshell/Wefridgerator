@@ -3,7 +3,7 @@
 	<div id="dd-elements">
 		<div id="drag-elements">
 
-			<% @category_array = @container.categories.all.map { |f|
+			<% @category_array = @categories.all.map { |f|
 				{ id: f.id, name: f.name, image: f.image} } %>
 
 			<p ng-init="cats = <%= @category_array.to_json %>"></p>
@@ -36,7 +36,7 @@
 </div>
 
 <!-- modal for categories -->
-s
+
 <!-- ends modal -->
 
 
@@ -45,6 +45,10 @@ s
 <div class="row">
   <div class="col-md-5 col-md-offset-1">
     <h1>Items in your kitchen</h1>
+    <%= link_to "All Items", container_categories_path(@container,itemfilter:"all", method: :get), class: "btn btn-default" %>
+    <%= link_to "Refridgerator",container_categories_path(@container, itemfilter:"refridgerator", method: :get), class: "btn btn-default" %>
+    <%= link_to "Freezer",container_categories_path(@container, itemfilter:"freezer", method: :get), class: "btn btn-default" %>
+    <%= link_to "Pantry", container_categories_path(@container, itemfilter:"pantry"), class: "btn btn-default" %>
     <% @items.each do |item| %>
       <% if item.container_type != "Shopping List" %>
       <li><strong><%= item.name %></strong>
@@ -59,7 +63,7 @@ s
   </div>
   <div class="col-md-5 col-md-offset-1">
     <h1>Items in your shopping list</h1>
-    <% @items.each do |item| %>
+    <% @shopping_list_items.each do |item| %>
       <% if item.container_type == "Shopping List" %>
       <li><strong><%= item.name %></strong> in the <%= item.container_type %>
     
