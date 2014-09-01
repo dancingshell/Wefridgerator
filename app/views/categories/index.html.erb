@@ -8,7 +8,7 @@
 			<p ng-init="cats = <%= @category_array.to_json %>"></p>
 			<div class="container">
 			<div class="row">
-				<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}', modal="true", dataToggle="modal", dataTarget=".bs-example-modal-lg">
+				<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}'>
 					<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
 						<div id="info">	<img src="/assets/{{c.image}}.png">
 						<div id="dropdown">{{c.name}}</div>				
@@ -45,4 +45,5 @@
   </div>
 </div>
 
+<%= render file: 'items/index' %>
 
