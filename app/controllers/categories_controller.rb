@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     @container = Container.find(params[:container_id])
     @categories = Category.where(:container => @container)
     @item = Item.new
-    
+    @items = Item.all
  
   end
 

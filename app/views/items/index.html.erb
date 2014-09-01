@@ -5,8 +5,8 @@
       <% if item.container_type != "Shopping List" %>
       <li><strong><%= item.name %></strong>
         <% if item.exp_date %> -- Expires: <%= item.exp_date.strftime("%A, %D") %><% end %> in the <%= item.container_type %>
-          <%= link_to "Add to Shopping List", update_item_path(@category, item) ,method: :post, class: "btn btn-success"%>
-        <%= link_to "Delete item...", category_item_path(@category, item), method: :delete, class: "btn btn-danger"%>
+          <%= link_to "Add to Shopping List", update_item_path(item.category_id, item) ,method: :post, class: "btn btn-success"%>
+        <%= link_to "Delete item...", category_item_path(item.category_id, item), method: :delete, class: "btn btn-danger"%>
       </li>
       <% end %>
     <% end %>
@@ -16,11 +16,23 @@
     <% @items.each do |item| %>
       <% if item.container_type == "Shopping List" %>
       <li><strong><%= item.name %></strong> in the <%= item.container_type %>
-          <%= link_to "Bought!", edit_category_item_path(@category, item), class: "btn btn-success" %>
-        <%= link_to "Delete item...", category_item_path(@category, item), method: :delete, class: "btn btn-danger"%>
+    
+    <button class="btn btn-success" data-toggle="modal" data-remote="<%= edit_category_item_path(item.category_id, item) %>" data-target=".bs-example-modal1-lg">Bought!</button>
+
+
+
+        <%= link_to "Delete item...", category_item_path(item.category_id, item), method: :delete, class: "btn btn-danger"%>
       </li>
       <% end %>
     <% end %>
   </div>
 </div>
 
+
+<div class="modal fade bs-example-modal1-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      
+    </div>
+  </div>
+</div>

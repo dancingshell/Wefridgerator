@@ -11,7 +11,7 @@
 				<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}'>
 					<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
 						<div id="info">	<img src="/assets/{{c.image}}.png">
-						<div id="dropdown">{{c.name}}</div>				
+						<div id="dropdown">{{c.name}}</div>	<a data-toggle="modal" data-target="#myModal" data-remote="<%= new_{{}}_item_path(c.id) %> #modal-edit-fields" class="btn btn-mini">Weigh out</a>			
 					</div>
 					</div>
 				</a>
@@ -37,6 +37,18 @@
 
 
 
+<<<<<<< HEAD
+<div id="modal-new-item">
+    <%= form_for @item, :html => { :class => 'form-horizontal' } do |f| %>    <div class="control-group">
+        <%= f.label :customer_name, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.hidden_field :customer_id, :class => 'text_field', :id =>"cust_id" %>
+          <%= f.autocomplete_field :customer_name, autocomplete_customer_name_customers_path, :id_element => '#cust_id', :class => 'text_field ui-autocomplete-input' %>
+        </div>
+        <% end %>
+</div>
+
+=======
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -47,3 +59,4 @@
 
 <%= render file: 'items/index' %>
 
+>>>>>>> 8ab6650a62acec6a80701dad1bc7a3de6a87afed
