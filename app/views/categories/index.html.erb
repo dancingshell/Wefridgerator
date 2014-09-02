@@ -70,7 +70,7 @@
     <div ng-repeat="item in itemData track by $index">
       <li><b>{{item.name}}</b> in the {{item.container_type}}
         <a class="btn btn-success" ng-click="editModal(item.category_id, item.id)">Bought!</a>
-        <a class="btn btn-warning" ng-click="deleteItem(item, item.category_id, item.id)">Delete Item</a>
+        <a class="btn btn-warning" ng-click="deleteItem(item.category_id, item, item.id)">Delete Item</a>
 
         
       <!--   <a class="btn btn-danger" href="<%#= category_item_path(item.category_id, item)%>">Delete</a> -->

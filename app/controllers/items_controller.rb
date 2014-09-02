@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :get_category, only: [:index, :show, :edit, :create, :update, :destroy]
-
+  skip_before_filter  :verify_authenticity_token
   def index
     @items = Item.all
   end
@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
     @item.destroy
     redirect_to container_categories_path(@category.container_id)
   end
