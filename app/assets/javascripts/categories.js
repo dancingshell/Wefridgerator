@@ -4,6 +4,15 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
   window.onload = function() {
 
+    $scope.editModal = function(category, item) {
+      $scope.item = item;
+      console.log("item: "+ $scope.item);
+      $scope.category = category;
+      
+      console.log("test modal");
+      $('.modal').modal({remote: "http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
+    }
+
     $scope.setCategory = function(category){
       $scope.categorySelected = category;
     }
@@ -121,5 +130,6 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       $('.modal').modal({remote: $scope.dropZoneLink});
     });
   };
+
 }]);
 

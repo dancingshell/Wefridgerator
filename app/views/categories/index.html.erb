@@ -69,8 +69,9 @@
     <h1>Items in your shopping list</h1>
     <div ng-repeat="item in itemData track by $index">
       <li><b>{{item.name}}</b> in the {{item.container_type}}
-        <a class="btn btn-success" ng-click="editModal(item.catergory_id, item)">Bought!</a>
-        <a class="btn btn-danger" href="category_item_path(item.category_id, item)" method="delete">Delete</a>
+        <a class="btn btn-success" ng-click="editModal(item.category_id, item.id)">Bought!</a>
+         <%= link_to "Delete item...", category_item_url(item.category_id, item.id), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger"%>
+      <!--   <a class="btn btn-danger" href="<%#= category_item_path(item.category_id, item)%>">Delete</a> -->
       </li>
     </div>
 

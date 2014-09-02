@@ -40,28 +40,10 @@ class CategoriesController < ApplicationController
   def destroy
   end
 
-  def item_filter
-    item_filter = params[:itemfilter]
-    item_filter.downcase!
-    case item_filter
-    when "refridgerator"
-      @items = Item.where(:container_type => "Refridgerator")
-    when "freezer"
-      @items = Item.where(:container_type => "Freezer")
-    when "pantry"
-      @items = Item.where(:container_type => "Pantry")
-    else
-      @items = Item.all
-    end
-  end
 
   def item_json
     @container = Container.find(params[:id])
     @categories = Category.where(:container => @container)
-
-    # c = category.container_id
-     # @items = render json: Item.all
-
     @items = render json: Item.where(category_id: @categories.map(&:id))
   end
 
