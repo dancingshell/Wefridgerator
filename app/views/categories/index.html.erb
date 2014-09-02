@@ -2,6 +2,8 @@
 <div ng-controller="dragNdrop">
 	<div id="dd-elements">
 		<div id="drag-elements">
+      TEST: <%= @categories.map(&:id) %>
+      Container: <%= @container.id %>
 
       <p ng-init="container = <%= @container.id %>"></p>
 
@@ -72,7 +74,7 @@
       </li>
     </div>
 
-
+API DATA END
 
     <% @shopping_list_items.each do |item| %>
       <% if item.container_type == "Shopping List" %>

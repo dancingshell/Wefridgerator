@@ -56,7 +56,13 @@ class CategoriesController < ApplicationController
   end
 
   def item_json
-    @items = render json: Item.all
+    @container = Container.find(params[:id])
+    @categories = Category.where(:container => @container)
+
+    # c = category.container_id
+     # @items = render json: Item.all
+
+    @items = render json: Item.where(category_id: @categories.map(&:id))
   end
 
 
