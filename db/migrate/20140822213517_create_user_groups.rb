@@ -1,4 +1,4 @@
-xclass CreateUserGroups < ActiveRecord::Migration
+class CreateUserGroups < ActiveRecord::Migration
   def change
     create_table :user_groups do |t|
       t.references :user, index: true
