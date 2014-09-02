@@ -1,18 +1,30 @@
 class CategoriesController < ApplicationController
+
+
   def index
     @container = Container.find(params[:container_id])
     @categories = Category.where(:container => @container)
     @item = Item.new
     @items = Item.all
- 
+    @shopping_list_items = Item.where(:container_type => "Shopping List")
+    item_filter = params[:itemfilter]
+    case item_filter
+    when "refridgerator"
+      @items = Item.where(:container_type => "Refridgerator")
+    when "freezer"
+      @items = Item.where(:container_type => "Freezer")
+    when "pantry"
+      @items = Item.where(:container_type => "Pantry")
+    else
+      @items = Item.all
+    end
   end
 
   def show
-    @category = Category.find(params[:id])
   end
 
   def new
-    @category = Category.find(params[:id])
+    @category = Category.new
     @item = Item.new
   end
 
@@ -28,16 +40,29 @@ class CategoriesController < ApplicationController
   def destroy
   end
 
-  def check_anagram
-    s = params[:s]
-    h = Hash.new
-    s.chars.uniq.each { |x| h[x] = s.count(x).even? }
-    render json: h.values.count(false) <= 1 ? 1 : 0
-    h = -1 if s != nil
+  def item_filter
+    item_filter = params[:itemfilter]
+    item_filter.downcase!
+    case item_filter
+    when "refridgerator"
+      @items = Item.where(:container_type => "Refridgerator")
+    when "freezer"
+      @items = Item.where(:container_type => "Freezer")
+    when "pantry"
+      @items = Item.where(:container_type => "Pantry")
+    else
+      @items = Item.all
+    end
   end
 
-  def nothing
-    render nothing: true
+  def item_json
+    @container = Container.find(params[:id])
+    @categories = Category.where(:container => @container)
+
+    # c = category.container_id
+     # @items = render json: Item.all
+
+    @items = render json: Item.where(category_id: @categories.map(&:id))
   end
 
 
