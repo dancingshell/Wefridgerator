@@ -2,22 +2,13 @@ class CategoriesController < ApplicationController
 
 
   def index
-    @container = Container.find(params[:container_id])
-    @categories = Category.where(:container => @container)
-    @item = Item.new
-    @items = Item.all
-    @shopping_list_items = Item.where(:container_type => "Shopping List")
-    item_filter = params[:itemfilter]
-    case item_filter
-    when "refridgerator"
-      @items = Item.where(:container_type => "Refridgerator")
-    when "freezer"
-      @items = Item.where(:container_type => "Freezer")
-    when "pantry"
-      @items = Item.where(:container_type => "Pantry")
-    else
+    if current_user = UserGroup.where()
+      @container = Container.find(params[:container_id])
+      @categories = Category.where(:container => @container)
+      @item = Item.new
       @items = Item.all
-    end
+      @shopping_list_items = Item.where(:container_type => "Shopping List")
+  
   end
 
   def show

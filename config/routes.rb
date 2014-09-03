@@ -18,12 +18,8 @@ Wefridgerator::Application.routes.draw do
 
   resources :groups do
     resources :user_groups
-    resources :containers
     resources :receipts
     resources :chat_rooms
-  end
-
-  resources :containers do
     resources :categories
     resources :arts
   end
