@@ -13,6 +13,31 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       $('.modal').modal({remote: "http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item + "/edit"});
     }
 
+    $scope.deleteItem = function(item, item_id, category) {
+      $scope.item_id = item_id;
+      $scope.category = category;
+      console.log(item);
+      if (item.id) {
+        console.log("inside the if");
+        // saved member
+        $http.delete("http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item_id).
+          success(function(data, status, headers, config) {
+          // this callback will be called asynchronously
+          // when the response is available
+           }).
+            error(function(data, status, headers, config) {
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+          });
+      }
+      //   $http.delete("http://localhost:3000/categories/" + $scope.category +"/items/" + $scope.item_id);
+      // }
+      else {
+        // unsaved member, remove it from members.
+        $scope.itemData.splice( $.inArray(item, $scope.itemData), 1 );
+      }
+    };
+
     $scope.setCategory = function(category){
       $scope.categorySelected = category;
     }

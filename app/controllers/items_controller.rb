@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
     @item.destroy
     redirect_to container_categories_path(@category.container_id)
   end
