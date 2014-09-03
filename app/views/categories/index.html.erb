@@ -37,24 +37,19 @@
 	</div>
 
 
-<!-- modal for categories -->
-
-<!-- ends modal -->
-
-
-
 <!-- items index -->
 <div class="row">
   <div class="col-md-5 col-md-offset-1">
     <h1>Items in your kitchen</h1>
-    <%= link_to "All Items", group_categories_path(@group,itemfilter:"all", method: :get), class: "btn btn-default" %>
+  <%= link_to "All Items", group_categories_path(@group,itemfilter:"all", method: :get), class: "btn btn-default" %>
     <%= link_to "Refridgerator",group_categories_path(@group, itemfilter:"refridgerator", method: :get), class: "btn btn-default" %>
     <%= link_to "Freezer",group_categories_path(@group, itemfilter:"freezer", method: :get), class: "btn btn-default" %>
     <%= link_to "Pantry", group_categories_path(@group, itemfilter:"pantry"), class: "btn btn-default" %>
 
     <% @items.each do |item| %>
     
-      <%= category = item.group %>
+      <% item_group = item.category.group.id %>
+      <% if item_group == @group.id %>
     
       <% if item.container_type != "Shopping List" %>
       <li><strong><%= item.name %></strong>
@@ -65,24 +60,27 @@
         <%= link_to "Delete item...", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger"%>
       </li>
       <% end %>
+      <% end %>
     <% end %>
   </div>
   <div class="col-md-5 col-md-offset-1">
     <h1>Items in your shopping list</h1>
-    <div ng-repeat="item in itemData track by $index">
+<!--     <div ng-repeat="item in itemData track by $index">
       <li><b>{{item.name}}</b> in the {{item.container_type}}
         <a class="btn btn-success" ng-click="editModal(item.category_id, item.id)">Bought!</a>
         <a class="btn btn-warning" ng-click="deleteItem(item.category_id, item, item.id)">Delete Item</a>
-
+ -->
         
       <!--   <a class="btn btn-danger" href="<%#= category_item_path(item.category_id, item)%>">Delete</a> -->
-      </li>
-    </div>
 
-API DATA END
+
 
     <% @shopping_list_items.each do |item| %>
-      <% if item.container_type == "Shopping List" %>
+      
+
+ <% item_group = item.category.group.id %>
+      <% if item_group == @group.id %>
+    <% if item.container_type == "Shopping List" %>
       <li><strong><%= item.name %></strong> in the <%= item.container_type %> 
     
     <button class="btn btn-success" data-toggle="modal" data-remote="<%= edit_category_item_url(item.category_id, item) %>" data-target=".bs-example-modal1-lg">Bought!</button>
@@ -92,6 +90,7 @@ API DATA END
         <%= link_to "Delete item...", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger"%>
       </li>
       <% end %>
+    <% end %>
     <% end %>
   </div>
 </div>
