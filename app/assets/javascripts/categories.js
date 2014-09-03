@@ -4,6 +4,11 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
   window.onload = function() {
 
+    $scope.filter_view = "All";
+    $scope.filter = function(filter) {
+      $scope.filter_view = filter;
+    }
+
     $scope.editModal = function(category, item) {
       $scope.item = item;
       console.log("item: "+ $scope.item);

@@ -41,23 +41,24 @@
 <div class="row">
   <div class="col-md-5 col-md-offset-1">
     <h1>Items in your kitchen</h1>
-  <%= link_to "All Items", group_categories_path(@group,itemfilter:"all", method: :get), class: "btn btn-default" %>
-    <%= link_to "Refridgerator",group_categories_path(@group, itemfilter:"refridgerator", method: :get), class: "btn btn-default" %>
-    <%= link_to "Freezer",group_categories_path(@group, itemfilter:"freezer", method: :get), class: "btn btn-default" %>
-    <%= link_to "Pantry", group_categories_path(@group, itemfilter:"pantry"), class: "btn btn-default" %>
+    <div class="btn btn-primary" ng-click="filter('All')">All Items</div>
+    <div class="btn btn-primary" ng-click="filter('Refridgerator')">Refridgerator</div>
+    <div class="btn btn-primary" ng-click="filter('Freezer')">Freezer</div>
+    <div class="btn btn-primary" ng-click="filter('Pantry')">Pantry</div>
 
     <% @items.each do |item| %>
     
       <% item_group = item.category.group.id %>
       <% if item_group == @group.id %>
-    
+  
       <% if item.container_type != "Shopping List" %>
-      <li><strong><%= item.name %></strong>
+      
+      <li ng-show='filter_view == "All" || filter_view == "<%= item.container_type %>"'><strong><%= item.name %></strong>
         <% if item.exp_date %> -- Expires: <%= item.exp_date.strftime("%A, %D") %><% end %> in the <%= item.container_type %>
           
       
           <%= link_to "Add to Shopping List", update_item_url(item.category_id, item) ,method: :post, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Adding to Shopping List..."}, class: "btn btn-success"%>
-        <%= link_to "Delete item...", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger"%>
+        <%= link_to "X", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger"%>
       </li>
       <% end %>
       <% end %>
