@@ -58,16 +58,19 @@ ActiveRecord::Schema.define(version: 20140903193041) do
   create_table "items", force: true do |t|
     t.string   "name"
     t.integer  "quantity"
-    t.integer  "category_id"
+    t.integer  "categories_id"
+    t.integer  "shopping_lists_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "container_type"
     t.boolean  "is_private"
     t.datetime "exp_date"
+    t.integer  "category_id"
   end
 
-  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["categories_id"], name: "index_items_on_categories_id", using: :btree
+  add_index "items", ["shopping_lists_id"], name: "index_items_on_shopping_lists_id", using: :btree
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|

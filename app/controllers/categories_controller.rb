@@ -2,9 +2,9 @@ class CategoriesController < ApplicationController
 
 
   def index
-    if current_user = UserGroup.where()
-      @container = Container.find(params[:container_id])
-      @categories = Category.where(:container => @container)
+    
+      @group = Group.find(params[:group_id])
+      @categories = Category.where(:group_id => @group)
       @item = Item.new
       @items = Item.all
       @shopping_list_items = Item.where(:container_type => "Shopping List")
@@ -33,8 +33,8 @@ class CategoriesController < ApplicationController
 
 
   def item_json
-    @container = Container.find(params[:id])
-    @categories = Category.where(:container => @container)
+    # @container = Container.find(params[:id])
+    @categories = Category.where(:group_id => @group)
     @items = render json: Item.where(category_id: @categories.map(&:id))
   end
 

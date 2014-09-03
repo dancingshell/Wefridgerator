@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @container = Container.where(group: @group)
+
   end
 
   def new
@@ -20,9 +20,8 @@ class GroupsController < ApplicationController
     @group.passcode = get_passcode
     if @group.save
 
-      @container = Container.create!(group: @group)
       #The first group refers to the group_id for the container and the second group refers to the group being created
-      make_categories(@container)
+      make_categories(@group)
 
       redirect_to group_path(@group)
     else
@@ -69,45 +68,45 @@ class GroupsController < ApplicationController
     group_passcode
   end
 
-  def make_categories(container_id)
+  def make_categories(group_id)
     categories = Category.create([
-      { name: "Dairy", container: container_id, image: "milk"
+      { name: "Dairy", group: group_id, image: "milk"
       },
-      { name: "Eggs", container: container_id, image: "eggs"
+      { name: "Eggs", group: group_id, image: "eggs"
       },
-      { name: "Cheese", container: container_id, image: "cheese"
+      { name: "Cheese", group: group_id, image: "cheese"
       },
-      { name: "Meat", container: container_id, image: "meat"
+      { name: "Meat", group: group_id, image: "meat"
       },
-      { name: "Fish", container: container_id, image: "fish"
+      { name: "Fish", group: group_id, image: "fish"
       },
-      { name: "Vegetable", container: container_id, image: "vegetable"
+      { name: "Vegetable", group: group_id, image: "vegetable"
       },
-      { name: "Fruit", container: container_id, image: "fruit"
+      { name: "Fruit", group: group_id, image: "fruit"
       },
-      { name: "Leftovers", container: container_id, image: "leftovers"
+      { name: "Leftovers", group: group_id, image: "leftovers"
       },
-      { name: "Juice", container: container_id, image: "juice"
+      { name: "Juice", group: group_id, image: "juice"
       },
-      { name: "Liquor", container: container_id, image: "liquor"
+      { name: "Liquor", group: group_id, image: "liquor"
       },
-      { name: "Beverage", container: container_id, image: "beverage"
+      { name: "Beverage", group: group_id, image: "beverage"
       },
-      { name: "Frozen", container: container_id, image: "frozen"
+      { name: "Frozen", group: group_id, image: "frozen"
       },
-      { name: "Dessert", container: container_id, image: "dessert"
+      { name: "Dessert", group: group_id, image: "dessert"
       },
-      { name: "Condiment", container: container_id, image: "condiment"
+      { name: "Condiment", group: group_id, image: "condiment"
       },
-      { name: "Bulk/Dried", container: container_id, image: "bulk"
+      { name: "Bulk/Dried", group: group_id, image: "bulk"
       },
-      { name: "Canned", container: container_id, image: "canned"
+      { name: "Canned", group: group_id, image: "canned"
       },
-      { name: "Sauce", container: container_id, image: "sauce"
+      { name: "Sauce", group: group_id, image: "sauce"
       },
-      { name: "Spice", container: container_id, image: "spice"
+      { name: "Spice", group: group_id, image: "spice"
       },
-      { name: "Other", container: container_id, image: "other"
+      { name: "Other", group: group_id, image: "other"
       },
     ])
  

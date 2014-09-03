@@ -3,7 +3,7 @@
 	<div id="dd-elements">
 		<div id="drag-elements">
 
-      <p ng-init="container = <%= @container.id %>"></p>
+      <p ng-init="group = <%= @group.id %>"></p>
 
 			<% @category_array = @categories.all.map { |f|
 				{ id: f.id, name: f.name, image: f.image} } %>
@@ -47,11 +47,15 @@
 <div class="row">
   <div class="col-md-5 col-md-offset-1">
     <h1>Items in your kitchen</h1>
-    <%= link_to "All Items", container_categories_path(@container,itemfilter:"all", method: :get), class: "btn btn-default" %>
-    <%= link_to "Refridgerator",container_categories_path(@container, itemfilter:"refridgerator", method: :get), class: "btn btn-default" %>
-    <%= link_to "Freezer",container_categories_path(@container, itemfilter:"freezer", method: :get), class: "btn btn-default" %>
-    <%= link_to "Pantry", container_categories_path(@container, itemfilter:"pantry"), class: "btn btn-default" %>
+    <%= link_to "All Items", group_categories_path(@group,itemfilter:"all", method: :get), class: "btn btn-default" %>
+    <%= link_to "Refridgerator",group_categories_path(@group, itemfilter:"refridgerator", method: :get), class: "btn btn-default" %>
+    <%= link_to "Freezer",group_categories_path(@group, itemfilter:"freezer", method: :get), class: "btn btn-default" %>
+    <%= link_to "Pantry", group_categories_path(@group, itemfilter:"pantry"), class: "btn btn-default" %>
+
     <% @items.each do |item| %>
+    
+      <%= category = item.category_id%>
+    
       <% if item.container_type != "Shopping List" %>
       <li><strong><%= item.name %></strong>
         <% if item.exp_date %> -- Expires: <%= item.exp_date.strftime("%A, %D") %><% end %> in the <%= item.container_type %>
@@ -79,7 +83,7 @@ API DATA END
 
     <% @shopping_list_items.each do |item| %>
       <% if item.container_type == "Shopping List" %>
-      <li><strong><%= item.name %></strong> in the <%= item.container_type %>
+      <li><strong><%= item.name %></strong> in the <%= item.container_type %> 
     
     <button class="btn btn-success" data-toggle="modal" data-remote="<%= edit_category_item_url(item.category_id, item) %>" data-target=".bs-example-modal1-lg">Bought!</button>
 

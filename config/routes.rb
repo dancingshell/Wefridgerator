@@ -11,7 +11,7 @@ Wefridgerator::Application.routes.draw do
   get "categories/:id/items/new_item" => "items#new_container_item", as: :new_container_item
   get "categories/:id/items/new_sl" => "items#new_shopping_list_item", as: :new_shopping_list_item
   # get "categories/api/"  => "categories#nothing"
-  get "containers/:id/api/items" => "categories#item_json"
+  get "groups/:id/api/items" => "categories#item_json"
   #delete "containers/:id/api/items" => "items#destroy"
   delete "categories/:category_id/items/:id" => "items#destroy"
 
