@@ -54,7 +54,7 @@
 
     <% @items.each do |item| %>
     
-      <%= category = item.category_id%>
+      <%= category = item.group %>
     
       <% if item.container_type != "Shopping List" %>
       <li><strong><%= item.name %></strong>

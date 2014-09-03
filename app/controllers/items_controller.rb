@@ -11,7 +11,9 @@ class ItemsController < ApplicationController
 
   def new_container_item
     @item = Item.new
+
     @category = Category.find(params[:id])
+
   end
 
   def new_shopping_list_item
