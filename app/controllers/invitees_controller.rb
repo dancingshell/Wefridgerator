@@ -28,7 +28,7 @@ class InviteesController < ApplicationController
     end
     redirect_to group_path(@group)
     # @unsent = emails_given - emails_sent
-    # if @unsent.count > 0
+    # i @unsent.count > 0
     #   render 'new'
     # else
     #   

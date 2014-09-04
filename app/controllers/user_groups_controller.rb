@@ -16,7 +16,7 @@ class UserGroupsController < ApplicationController
       @user_group.user = current_user
       @user_group.group = group
       if @user_group.save
-        redirect_to group_user_groups_path
+        redirect_to group_categories_path(group)
       else
         render "new"
       end

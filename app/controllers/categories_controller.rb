@@ -1,14 +1,14 @@
 class CategoriesController < ApplicationController
 
 
-  def index
-    
-      @group = Group.find(params[:group_id])
-      @categories = Category.where(:group_id => @group)
-      @item = Item.new
-      @items = Item.all
-      @shopping_list_items = Item.where(:container_type => "Shopping List")
-  
+  def index 
+    @group = Group.find(params[:group_id])
+    @categories = Category.where(:group_id => @group)
+    @item = Item.new
+    @items = Item.all
+    @shopping_list_items = Item.where(:container_type => "Shopping List")
+    @category_array = @categories.all.map { |f|
+        { id: f.id, name: f.name, image: f.image} }.to_json
   end
 
   def show

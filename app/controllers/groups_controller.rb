@@ -6,7 +6,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-
   end
 
   def new
@@ -23,7 +22,7 @@ class GroupsController < ApplicationController
       #The first group refers to the group_id for the container and the second group refers to the group being created
       make_categories(@group)
 
-      redirect_to group_path(@group)
+      redirect_to group_categories_path(@group)
     else
       redirect_to new_group_path
     end

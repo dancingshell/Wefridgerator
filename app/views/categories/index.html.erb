@@ -1,4 +1,4 @@
-
+<% if current_groups.include?(@group) %>
 <div ng-controller="dragNdrop">
 	<div id="dd-elements">
 		<div id="drag-elements">
@@ -6,19 +6,15 @@
       <!-- initializes current groups id -->
       <p ng-init="group = <%= @group.id %>"></p>
 
-      <!-- this goes through all the catgories array and pulls out a id, name and image -->
-			<% @category_array = @categories.all.map { |f|
-				{ id: f.id, name: f.name, image: f.image} } %>
-
         <!-- initalizes category array -->
-			<p ng-init="cats = <%= @category_array.to_json %>"></p>
+			<p ng-init="cats = <%= @category_array %>"></p>
 			<div class="container">
 			 
         <!-- Back a page in pagination -->
        
       <div class="row">
         <div class="col-md-8 col-md-offset-2 text-center food-items">
-  				<a ng-repeat='c in cats.slice(page_start,page_end)| orderBy:"name":false' ng-href'{{dropZoneLink}}'>
+  				<a ng-repeat='c in active_cats()| orderBy:"name":false' ng-href'{{dropZoneLink}}'>
   					<div class="col-md-6 col-md-offset-3 category" draggable="true" ng-mousedown="setCategory(c.id)">
   						<div id="info">	<img ng-src="/assets/{{c.image}}.png">
   						  <div id="dropdown">{{c.name}}</div>				
@@ -125,3 +121,6 @@
 </div>
 
 </div>
+<% else %>
+  <%= render 'partials/create_group' %>
+<% end %>

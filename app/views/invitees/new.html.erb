@@ -1,6 +1,3 @@
-<h1>Invitees#new</h1>
-<p>Find me in app/views/invitees/new.html.erb</p>
-
 <%= form_for @invitee, {url: group_invitees_path(@group)} do |f| %>
   <%= f.text_area :email, placeholder: "Enter emails", name: "email" %>
   <%= f.submit %>

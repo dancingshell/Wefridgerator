@@ -11,14 +11,14 @@ class UserMailer < ActionMailer::Base
     @group = Group.where(:id => @invitee.group).first
     @owner = User.where(:id => @group.owner).first
 
-    mail to: @invitee.email, subject: "#{@owner.first_name} invited you to join with Wefridgerator group!"
+    mail to: @invitee.email, subject: "#{@owner.first_name} invited you to join their Wefridgerator group!"
   end
 
   def signup_email(invitee)
     @invitee = invitee
     @group = Group.where(:id => @invitee.group).first
     @owner = User.where(:id => @group.owner).first
-    
-    mail to: @invitee.email, subject: "#{@owner.first_name} invited you to join with Wefridgerator group!"
+     
+    mail to: @invitee.email, subject: "#{@owner.first_name} invited you to join their Wefridgerator group!"
   end
 end

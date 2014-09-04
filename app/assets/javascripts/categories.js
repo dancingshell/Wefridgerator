@@ -3,12 +3,17 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
   console.log('angular loaded');
 
   window.onload = function() {
-
-    $scope.cat_length = $scope.cats.length
     $scope.page_start = 0
     $scope.page_end = 5
+    
+    $scope.active_cats = function() {
+      return $scope.cats.slice($scope.page_start, $scope.page_end);
+    }
+
+    $scope.cat_length = $scope.cats.length
     $scope.end_button = true;
     $scope.start_button = false;
+    
     $scope.page_move = function(direction) {
       $scope.page_start += direction;
       console.log("start: " + $scope.page_start);
