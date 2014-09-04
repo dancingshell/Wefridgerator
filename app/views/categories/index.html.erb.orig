@@ -13,6 +13,33 @@
         <!-- initalizes category array -->
 			<p ng-init="cats = <%= @category_array.to_json %>"></p>
 			<div class="container">
+<<<<<<< HEAD
+			<div class="row">
+      <!-- ng repeats cats which = @category_array -->
+        <!-- ng-href changes the link depending on what dropzone you put the item into -->
+				<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}'>
+					<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
+						<div id="info">	<img ng-src="/assets/{{c.image}}.png">
+						<div id="dropdown">{{c.name}}</div>				
+					</div>
+					</div>
+				</a>
+			</div>
+			</div>
+		</div> 
+		<div class="row">
+			<div class="col-md-3 col-md-offset-3 text-center">
+				<p class="container-title">Add to Kitchen</p><div id="drop-target-one">
+				<!-- <div class="fridge-drop-container"> --><%#= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
+				<!-- </div> -->
+				</div>
+			</div>
+			
+			<div class="col-md-3 text-center">
+				<p class="container-title">Add to Shopping List</p><div id="drop-target-two">
+				</div>
+			</div>
+=======
 			 
         <!-- Back a page in pagination -->
        
@@ -36,6 +63,7 @@
           <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="end_button" ng-click="page_move(5)">&gt;&gt;</div>
         </div>
       </div>
+>>>>>>> eab59a4fe86eac0829a3279e0ddd8ed2a22fdd7c
 		</div>
 	</div>
 </div> 

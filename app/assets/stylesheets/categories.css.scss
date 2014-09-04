@@ -3,17 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#dd-elements {
+  margin-bottom: 50px;
+}
 #drop-target-one,
 #drop-target-two
  {
   display: inline-block;
   background-color: white;
   border-radius: 25px;
-  max-width: 300px;
+  max-width: 200px;
   min-width: 200px;
   height: 240px;
   margin: 0 auto;
   
+}
+
+.food-items {
+  margin-bottom: 20px;
 }
 .container-title {
   font-size: 20px;
@@ -29,7 +36,7 @@
 .category {
   height: 100px;
   max-width: 100px;
-  margin: 12px;
+  margin: 18px;
 }
 
 #dropdown {
