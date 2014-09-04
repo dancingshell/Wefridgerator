@@ -10,31 +10,47 @@
 
 			<p ng-init="cats = <%= @category_array.to_json %>"></p>
 			<div class="container">
-			<div class="row">
-				<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}'>
-					<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
-						<div id="info">	<img ng-src="/assets/{{c.image}}.png">
-						<div id="dropdown">{{c.name}}</div>				
-					</div>
-					</div>
-				</a>
-			</div>
-			</div>
-		</div> 
-		<div class="row">
-			<div class="col-md-3 col-md-offset-3 text-center">
-				<p class="container-title">Add to Kitchen</p><div id="drop-target-one">
-				<!-- <div class="fridge-drop-container"> --><%#= image_tag "https://s3.amazonaws.com/uploads.hipchat.com/39979/962337/lQTLYzlNX84Jns3/fridge.png" %>
-				<!-- </div> -->
-				</div>
-			</div>
-			
-			<div class="col-md-3 text-center">
-				<p class="container-title">Add to Shopping List</p><div id="drop-target-two">
-				</div>
-			</div>
+			 
+        <!-- Back a page in pagination -->
+       
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center food-items">
+  				<a ng-repeat='c in cats.slice(page_start,page_end)| orderBy:"name":false' ng-href'{{dropZoneLink}}'>
+  					<div class="col-md-6 col-md-offset-3 category" draggable="true" ng-mousedown="setCategory(c.id)">
+  						<div id="info">	<img ng-src="/assets/{{c.image}}.png">
+  						  <div id="dropdown">{{c.name}}</div>				
+  					  </div>
+  					</div>
+  				</a>
+        </div>
+      </div>
+        <!-- Advance page in pagination -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="start_button" ng-click="page_move(-5)">&lt;&lt;</div>
+        </div>
+        <div class="col-md-6 ">
+          <div class="btn btn-primary col-md-1 col-md-offset-5" ng-show="end_button" ng-click="page_move(5)">&gt;&gt;</div>
+        </div>
+      </div>
 		</div>
 	</div>
+</div> 
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  	<div class="col-md-6 text-center">
+  		<p class="container-title">Add to Kitchen</p>
+      <div id="drop-target-one"></div>
+  	</div>
+  	
+  	<div class="col-md-6 text-center">
+  		<p class="container-title">Add to Shopping List</p>
+      <div id="drop-target-two"></div>
+  	</div>
+  </div>
+</div>
 
 
 <!-- items index -->

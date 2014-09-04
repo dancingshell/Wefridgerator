@@ -4,7 +4,34 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
   window.onload = function() {
 
+    $scope.cat_length = $scope.cats.length
+    $scope.page_start = 0
+    $scope.page_end = 5
+    $scope.end_button = true;
+    $scope.start_button = false;
+    $scope.page_move = function(direction) {
+      $scope.page_start += direction;
+      console.log("start: " + $scope.page_start);
+      $scope.page_end += direction;
+      if ($scope.page_end >= $scope.cats.length) {
+        $scope.end_button = false;
+      }
+      else {
+        $scope.end_button = true;
+      }
+      if ($scope.page_start <= 0) {
+        $scope.start_button = false;
+      }
+      else {
+        $scope.start_button = true;
+      }
+
+
+      console.log("end: " + $scope.page_end);
+    }
+
     $scope.filter_view = "All";
+    // default view is All
     $scope.filter = function(filter) {
       $scope.filter_view = filter;
     }
