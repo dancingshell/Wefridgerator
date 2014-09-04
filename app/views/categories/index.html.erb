@@ -62,7 +62,7 @@
     <div class="btn btn-primary" ng-click="filter('Freezer')">Freezer</div>
     <div class="btn btn-primary" ng-click="filter('Pantry')">Pantry</div>
 
-    <% @items.each do |item| %>
+    <% @items.each  do |item| %>
     
       <% item_group = item.category.group.id %>
       <% if item_group == @group.id %>

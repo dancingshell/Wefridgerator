@@ -1,4 +1,5 @@
 Wefridgerator::Application.routes.draw do
+  get "invitees/new"
   root 'users#new'
 
   resources :users
@@ -17,6 +18,7 @@ Wefridgerator::Application.routes.draw do
 
 
   resources :groups do
+    resources :invitees
     resources :user_groups
     resources :receipts
     resources :chat_rooms

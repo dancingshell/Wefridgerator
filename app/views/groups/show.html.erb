@@ -9,7 +9,8 @@
 <!-- Kaitlin tricked the system by going into the array which is containers, but there is only one. So it displays the first which is the only one! -->
 
 <%= @group.passcode %>
-<%= link_to "Invite friends", new_group_user_group_path(@group) %>
+<%= link_to "Enter Passcode", new_group_user_group_path(@group) %>
+<%= link_to "Invite Friends", new_group_invitee_path(@group) %>
 
 
 <% else %>

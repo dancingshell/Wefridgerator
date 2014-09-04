@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
 	has_many :receipts
   has_many :chatrooms
   has_many :arts
+  has_many :invitees
   has_many :items, through: :categories
   
   # belongs_to :user_groups
