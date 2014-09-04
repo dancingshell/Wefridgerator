@@ -113,18 +113,21 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
 
     // Event Listener for when the dragged element leaves the drop zone.
     dropZoneOne.addEventListener('dragleave', function(e) {
+    // When it leaves the drop zone, do nothing
       this.className = "";
     });
 
     // Event Listener for when the dragged element dropped in the drop zone.
     dropZoneOne.addEventListener('drop', function(e) {
+      // dataTransfer obtains the data
     var data = e.dataTransfer.getData('text');
+      // not sure if needed, but will leave just in case
       if (e.preventDefault) e.preventDefault(); 
       if (e.stopPropagation) e.stopPropagation(); 
 
       this.className = "";
       
-      // $scope.dropZoneLink = "<%#= new_category_item_path($scope.category) %>";
+      
       $scope.dropZoneLink = "http://localhost:3000/categories/"+$scope.categorySelected+"/items/new_item";
       console.log("dropped " + data);
       console.log($scope.dropZoneLink);
