@@ -26,4 +26,19 @@ Wefridgerator::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # No, bro, I do care when there's errors when sending mail
+  config.action_mailer.raise_delivery_errors = true
+
+  # Deliver settings needed for gmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'localhost:3000',
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    user_name: ENV["WEFRIDGE_GMAIL_USER"],
+    password:  ENV["WEFRIDGE_GMAIL_PASSWORD"]
+  }
 end
