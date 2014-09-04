@@ -128,6 +128,10 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
       console.log($scope.dropZoneLink);
       //window.location.href = e.dataTransfer.getData('text');
       window.location.href = $scope.dropZoneLink;
+
+
+
+
     });
   };
 }]);
