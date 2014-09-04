@@ -3,14 +3,19 @@
 	<div id="dd-elements">
 		<div id="drag-elements">
 
+      <!-- initializes current groups id -->
       <p ng-init="group = <%= @group.id %>"></p>
 
+      <!-- this goes through all the catgories array and pulls out a id, name and image -->
 			<% @category_array = @categories.all.map { |f|
 				{ id: f.id, name: f.name, image: f.image} } %>
 
+        <!-- initalizes category array -->
 			<p ng-init="cats = <%= @category_array.to_json %>"></p>
 			<div class="container">
 			<div class="row">
+      <!-- ng repeats cats which = @category_array -->
+        <!-- ng-href changes the link depending on what dropzone you put the item into -->
 				<a ng-repeat="c in cats | orderBy:'name':false" ng-href='{{dropZoneLink}}'>
 					<div class="col-md-1 category" draggable="true" ng-mousedown="setCategory(c.id)">
 						<div id="info">	<img ng-src="/assets/{{c.image}}.png">
