@@ -55,7 +55,7 @@
 <!-- items index -->
 <div class="row">
   <div class="col-md-5 col-md-offset-1">
-    <h1>Items in your kitchen</h1>
+    <h1 class="container-list-title text-center">Items in your kitchen</h1>
     <div class="btn btn-primary" ng-click="filter('All')">All Items</div>
     <div class="btn btn-primary" ng-click="filter('Refridgerator')">Refridgerator</div>
     <div class="btn btn-primary" ng-click="filter('Freezer')">Freezer</div>
@@ -80,7 +80,7 @@
     <% end %>
   </div>
   <div class="col-md-5 col-md-offset-1">
-    <h1>Items in your shopping list</h1>
+    <h1 class="container-list-title text-center">Shopping List</h1>
 <!--     <div ng-repeat="item in itemData track by $index">
       <li><b>{{item.name}}</b> in the {{item.container_type}}
         <a class="btn btn-success" ng-click="editModal(item.category_id, item.id)">Bought!</a>
