@@ -41,8 +41,8 @@
 
 <!-- items index -->
 <div class="row">
-  <div class="col-md-5 col-md-offset-1">
-    <h1 class="container-list-title text-center">Items in your kitchen</h1>
+  <div class="col-md-3">
+    <h1 class="container-list-title text-center"><%= @group.name %> Items</h1>
     <div class="btn btn-primary" ng-click="filter('All')">All Items</div>
     <div class="btn btn-primary" ng-click="filter('Refridgerator')">Refridgerator</div>
     <div class="btn btn-primary" ng-click="filter('Freezer')">Freezer</div>
@@ -83,7 +83,7 @@
   
   </div>
  <div class="col-md-3">
-    <h1>Shopping list</h1>
+    <h1 class="container-list-title text-center">Shopping list</h1>
 
     <% @shopping_list_items.each do |item| %>
       
