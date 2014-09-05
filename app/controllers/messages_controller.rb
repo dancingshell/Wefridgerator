@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
     @message = @group.messages.new(message_params)
     @message.user_id = current_user.id
     if @message.save
-      redirect_to groups_path
+      redirect_to group_categories_path(@group)
     else 
       render 'new'
     end
