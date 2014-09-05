@@ -9,13 +9,13 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "angular" %>
   <%= csrf_meta_tags %>
-<%= render 'layouts/header' %>
+
 </head>
 
 <body>
- 
 
-
+ <%= render 'partials/navbar' %>
+ <%= render 'layouts/header' %>
 <%= yield %>
 
 

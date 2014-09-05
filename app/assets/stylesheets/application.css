@@ -19,9 +19,40 @@
 body {
   background: #4AABCC;
   color: #3D1429;
-  margin: 0 auto;
+  width: 100%;
 
 }
+
 a {
    color: #3D1429;
 }
+
+.navbar-default {
+  background: rgba(20,20,20,.3);
+  border: none;
+  color: white;
+}
+
+.navbar-nav {
+  color:white;
+}
+
+.navbar-inverse .navbar-nav > a,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: transparent;
+  color: white;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover {
+  background-color: transparent;
+}
+
+
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
+

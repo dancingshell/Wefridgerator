@@ -1,10 +1,6 @@
-
-
-
-
   <!-- Login Screen -->
   <div class="newitem">
-  <div class="container-fluid" style="width: 500px">
+  <div class="container-fluid" style="width: 400px">
     <h1>Add new <%= @category.name %>!<img src="/assets/<%= @category.image %>.png"></h1> 
  	    <%= form_for @item, {url: category_items_path(@category)} do |f| %>
         <div class="form-group">
@@ -35,7 +31,7 @@
 				</div>
   			 <%= f.submit "Add item!", :class => "btn btn-lg btn-primary btn-block", data: { disable_with: "Adding..."} %>
       	<% end %>
-<button id="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	</div>
 	</div>
 
