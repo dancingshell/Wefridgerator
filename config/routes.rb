@@ -21,17 +21,13 @@ Wefridgerator::Application.routes.draw do
     resources :invitees
     resources :user_groups
     resources :receipts
-    resources :chat_rooms
     resources :categories
     resources :arts
+    resources :messages
   end
 
   resources :categories do
     resources :items, only: [:index, :show, :create, :edit, :update, :destroy]
-  end
-
-  resources :chat_rooms do
-    resources :messages
   end
 
 end

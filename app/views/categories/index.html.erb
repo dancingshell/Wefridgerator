@@ -37,25 +37,11 @@
 </div> 
 
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  	<div class="col-md-6 text-center">
-  		<p class="container-title">Add to Kitchen</p>
-      <div id="drop-target-one"></div>
-  	</div>
-  	
-  	<div class="col-md-6 text-center">
-  		<p class="container-title">Add to Shopping List</p>
-      <div id="drop-target-two"></div>
-  	</div>
-  </div>
-</div>
 
 
-<!-- items index -->
-<div class="row">
-  <div class="col-md-5 col-md-offset-1">
-    <h1>Items in your kitchen</h1>
+<div class="row container-fluid text-center">
+ <div class="col-md-3 ">
+    <h1><%=@group.name %> items</h1>
     <div class="btn btn-primary" ng-click="filter('All')">All Items</div>
     <div class="btn btn-primary" ng-click="filter('Refridgerator')">Refridgerator</div>
     <div class="btn btn-primary" ng-click="filter('Freezer')">Freezer</div>
@@ -68,28 +54,35 @@
   
       <% if item.container_type != "Shopping List" %>
       
-      <li ng-show='filter_view == "All" || filter_view == "<%= item.container_type %>"'><strong><%= item.name %></strong>
-        <% if item.exp_date %> -- Expires: <%= item.exp_date.strftime("%A, %D") %><% end %> in the <%= item.container_type %>
+      <li ng-show='filter_view == "All" || filter_view == "<%= item.container_type %>"'>
+
+<%= image_tag item.category.image + ".png", class: "img-responsive", size: "30x30" %>
+
+     <strong><%= item.name %></strong> in <b><%= item.container_type %></b>  <% if item.exp_date %>, <b>Expires:</b> <%= item.exp_date.strftime("%A, %D") %><% end %>
           
+
+      <%= link_to "x", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger btn-xs pull-right"%>
       
-          <%= link_to "Add to Shopping List", update_item_url(item.category_id, item) ,method: :post, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Adding to Shopping List..."}, class: "btn btn-success"%>
-        <%= link_to "X", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger"%>
-      </li>
+          <%= link_to "+ Shopping List", update_item_url(item.category_id, item) ,method: :post, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Adding to Shopping List..."}, class: "btn btn-success btn-xs pull-right"%>
+        </li>
       <% end %>
       <% end %>
     <% end %>
   </div>
-  <div class="col-md-5 col-md-offset-1">
-    <h1>Items in your shopping list</h1>
-<!--     <div ng-repeat="item in itemData track by $index">
-      <li><b>{{item.name}}</b> in the {{item.container_type}}
-        <a class="btn btn-success" ng-click="editModal(item.category_id, item.id)">Bought!</a>
-        <a class="btn btn-warning" ng-click="deleteItem(item.category_id, item, item.id)">Delete Item</a>
- -->
-        
-      <!--   <a class="btn btn-danger" href="<%#= category_item_path(item.category_id, item)%>">Delete</a> -->
-
-
+  <div class="col-md-6 ">
+  	<div class="col-md-6 text-center">
+  		<p class="container-title">Add to Kitchen</p>
+      <div id="drop-target-one"></div>
+  	</div>
+  	
+  	<div class="col-md-6 text-center">
+  		<p class="container-title">Add to Shopping List</p>
+      <div id="drop-target-two"></div>
+  	</div>
+  
+  </div>
+ <div class="col-md-3">
+    <h1>Shopping list</h1>
 
     <% @shopping_list_items.each do |item| %>
       
@@ -97,19 +90,28 @@
  <% item_group = item.category.group.id %>
       <% if item_group == @group.id %>
     <% if item.container_type == "Shopping List" %>
-      <li><strong><%= item.name %></strong> in the <%= item.container_type %> 
+      <li><strong><%= item.name %></strong>
+      
     
-    <button class="btn btn-success" data-toggle="modal" data-remote="<%= edit_category_item_url(item.category_id, item) %>" data-target=".bs-example-modal1-lg">Bought!</button>
+    <button class="btn btn-success btn-xs" data-toggle="modal" data-remote="<%= edit_category_item_url(item.category_id, item) %>" data-target=".bs-example-modal1-lg">Bought!</button>
 
 
 
-        <%= link_to "Delete item...", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger"%>
+        <%= link_to "x", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger btn-xs"%>
       </li>
       <% end %>
     <% end %>
     <% end %>
   </div>
 </div>
+</div>
+
+
+
+<!-- items index -->
+
+ 
+ 
 
 
 <div class="modal fade bs-example-modal1-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -124,3 +126,10 @@
 <% else %>
   <%= render 'partials/create_group' %>
 <% end %>
+
+
+<br>
+
+  <div id="my-posts">
+    <%= render 'messages' %>
+  </div>
