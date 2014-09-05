@@ -4,7 +4,7 @@
 
 
 #dd-elements {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 #drop-target-one,
 #drop-target-two
@@ -77,9 +77,12 @@ li {
 }
 
 
- .scroll { 
-
-      width: 800px;
-      height: 400px;
-      overflow: scroll;
-  }
+.scroll { 
+  padding: 10px 20px;
+  width: 585px;
+  height: 120px;
+  overflow: scroll;
+  border-radius: 25px;
+  background: lighten(#4AABCC, 10%);
+  margin-bottom: 20px;
+}

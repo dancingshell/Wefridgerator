@@ -1,17 +1,17 @@
-
-<%= form_for @message,  {url: group_messages_path(@group), :remote => true}  do |f| %>
-    <div class="form-group">
-      <%= f.text_field :comment, class:"form-control", :placeholder => "Write a comment..." %>
-      <% f.button "Add comment",  class:"btn btn-primary btn-lg", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Adding..."} %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @message,  {url: group_messages_path(@group), :remote => true}  do |f| %>
+      <div class="form-group">
+        <%= f.text_field :comment, class:"form-control", :placeholder => "Write a comment..." %>
+        <% f.button "Add comment",  class:"btn btn-primary btn-lg", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Adding..."} %>
       </div>
-
-  <% end %>
-  <div class="scroll">
-<li><% @group.messages.reverse.each do |c| %>
-
-<small><%= c.user.first_name %></small>
-
-<%= c.comment %></li>
-
-<% end %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="scroll col-md-6 col-md-offset-3">
+    <% @group.messages.reverse.each do |c| %>
+      <li><b><%= c.user.first_name %>: </b><%= c.comment %></li>
+    <% end %>
+  </div>
 </div>
