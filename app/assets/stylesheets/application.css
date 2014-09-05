@@ -9,18 +9,17 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require font-awesome
+
  *= require_tree .
  */
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
-<<<<<<< HEAD
+
 @import url(http://fonts.googleapis.com/css?family=Josefin+Slab:400,600,700);
 
 
-=======
->>>>>>> 46256b23139f203930880ffeecef472b8e8f85f0
+
 
 body {
   background: #4AABCC;
