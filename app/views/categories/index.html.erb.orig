@@ -39,10 +39,16 @@
 
 
 
+<<<<<<< HEAD
+<div class="row container-fluid text-center">
+ <div class="col-md-3 ">
+    <h1><%=@group.name %> items</h1>
+=======
 <!-- items index -->
 <div class="row">
   <div class="col-md-5 col-md-offset-1">
     <h1 class="container-list-title text-center">Items in your kitchen</h1>
+>>>>>>> Kaitlin
     <div class="btn btn-primary" ng-click="filter('All')">All Items</div>
     <div class="btn btn-primary" ng-click="filter('Refridgerator')">Refridgerator</div>
     <div class="btn btn-primary" ng-click="filter('Freezer')">Freezer</div>
@@ -70,6 +76,7 @@
       <% end %>
     <% end %>
   </div>
+<<<<<<< HEAD
   <div class="col-md-6 ">
   	<div class="col-md-6 text-center">
   		<p class="container-title">Add to Kitchen</p>
@@ -84,6 +91,19 @@
   </div>
  <div class="col-md-3">
     <h1>Shopping list</h1>
+=======
+  <div class="col-md-5 col-md-offset-1">
+    <h1 class="container-list-title text-center">Shopping List</h1>
+<!--     <div ng-repeat="item in itemData track by $index">
+      <li><b>{{item.name}}</b> in the {{item.container_type}}
+        <a class="btn btn-success" ng-click="editModal(item.category_id, item.id)">Bought!</a>
+        <a class="btn btn-warning" ng-click="deleteItem(item.category_id, item, item.id)">Delete Item</a>
+ -->
+        
+      <!--   <a class="btn btn-danger" href="<%#= category_item_path(item.category_id, item)%>">Delete</a> -->
+
+
+>>>>>>> Kaitlin
 
     <% @shopping_list_items.each do |item| %>
       
