@@ -3,20 +3,35 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#dd-elements {
+  margin-bottom: 50px;
+}
 #drop-target-one,
 #drop-target-two
  {
   display: inline-block;
   background-color: white;
   border-radius: 25px;
-  max-width: 300px;
+  max-width: 200px;
   min-width: 200px;
   height: 240px;
   margin: 0 auto;
-  p {
-    margin-top: 20px;
-    font-size: 18px;
-  }
+}
+
+.food-items {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.container-title {
+  font-size: 20px;
+  color: white;
+  font-family: 'Lemon', helvetica, sans-serif;
+}
+
+.container-list-title {
+  font-size: 35px;
+  color: white;
+  font-family: 'Lemon', helvetica, sans-serif;
 }
 
 .over {
@@ -28,13 +43,14 @@
 .category {
   height: 100px;
   max-width: 100px;
-  margin: 12px;
+  margin: 18px;
 }
 
 #dropdown {
   background: white;
   border-radius: 15px;
   margin-top: 5px;
+  margin-bottom: 50px;
   color: #333333;
   width: 100px;
   height: 0;
@@ -55,3 +71,15 @@
   left:0px;
   height:22px;
 }
+
+li {
+  list-style: none;
+}
+
+
+ .scroll { 
+
+      width: 800px;
+      height: 400px;
+      overflow: scroll;
+  }

@@ -9,20 +9,59 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require font-awesome
  *= require_tree .
  */
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+<<<<<<< HEAD
 @import url(http://fonts.googleapis.com/css?family=Josefin+Slab:400,600,700);
 
 
+=======
+>>>>>>> 46256b23139f203930880ffeecef472b8e8f85f0
 
 body {
   background: #4AABCC;
   color: #3D1429;
+  width: 100%;
 
 }
+
 a {
    color: #3D1429;
 }
+
+.navbar-default {
+  background: rgba(20,20,20,.3);
+  border: none;
+  color: white;
+  -webkit-box-shadow: 0px 7px 20px 1px rgba(9,68,120,1);
+  -moz-box-shadow: 0px 7px 20px 1px rgba(9,68,120,1);
+  box-shadow: 0px 7px 20px 1px rgba(9,68,120,1);
+}
+
+.navbar-nav {
+  color:white;
+}
+
+.navbar-inverse .navbar-nav > a,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: transparent;
+  color: white;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover {
+  background-color: transparent;
+}
+
+
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
+

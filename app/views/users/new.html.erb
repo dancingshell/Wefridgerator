@@ -46,6 +46,13 @@
 
 <div id="content4">
 
+<% if current_user %>
+ <% current_groups.each do |g| %>
+ 
+    <li><%= link_to g.name, group_path(g) %></li>
+
+<% end %>
+	<% else %>
 
 </div>
 
@@ -64,6 +71,11 @@
 
 	<%= f.submit "Submit HERE FOR FRDGES AND %*&*&" %>
 
+<<<<<<< HEAD
 <% end %> -->
+=======
+<% end %>
+<% end %>
+>>>>>>> 46256b23139f203930880ffeecef472b8e8f85f0
 
 

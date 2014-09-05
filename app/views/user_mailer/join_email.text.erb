@@ -1,0 +1,8 @@
+Congratulations! <%= @owner.first_name %> <%= @owner.last_name %> has invited you to join their Wefridgerator Group!
+
+<%= link_to "Click to join!", new_group_user_group_path(@group) %>
+
+Use this passcode: <%= @group.passcode %>
+
+Love,
+The Wefridgerator Team

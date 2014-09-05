@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :get_category, only: [:index, :show, :edit, :create, :update, :destroy]
-
+  skip_before_filter  :verify_authenticity_token
   def index
     @items = Item.all
   end
@@ -11,7 +11,9 @@ class ItemsController < ApplicationController
 
   def new_container_item
     @item = Item.new
+
     @category = Category.find(params[:id])
+
   end
 
   def new_shopping_list_item
@@ -28,7 +30,7 @@ class ItemsController < ApplicationController
     #Assigns container type to items dropped in the shopping list
     if @item.save
       
-      redirect_to category_items_path(@category)
+      redirect_to group_categories_path(@category.group_id)
     else
       render 'new'
     end
@@ -42,7 +44,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update_attributes(item_params)
       @item.update_attribute(:container_type, change_container(@item))
-      redirect_to category_items_path(@category)
+      redirect_to group_categories_path(@category.group_id)
     else
       render 'edit'
     end
@@ -54,13 +56,13 @@ class ItemsController < ApplicationController
     @item.update_attribute(:container_type, change_container(@item))
     @item.update_attribute(:exp_date, nil)
     #change_container(@item)
-    redirect_to category_items_path(@category)
+    redirect_to group_categories_path(@category.group_id)
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to category_items_path(@category)
+    redirect_to group_categories_path(@category.group_id)
   end
 
   private

@@ -1,14 +1,19 @@
-
-<% if @group.owner == current_user.id.to_s %>
-
-<h1>Welcome to <%= @group.name %></h1>
+<% if current_groups.include?(@group) %>
 
 
+  <% if @group.owner == current_user.id.to_s %>
+    <a class="btn btn-default" href"<%= edit_group_path(@group) %>">Preferences</a>
+  <% end %>
+  <h1>Welcome to <%= @group.name %></h1>
 
-<%= link_to( @group.name, container_categories_url(@container.first), data: { no_turbolink: true}) %>
-<!-- Kaitlin tricked the system by going into the array which is containers, but there is only one. So it displays the first which is the only one! -->
 
-<%= link_to "Invite friends", new_group_user_group_path(@group) %>
+
+  <%= link_to( @group.name, group_categories_url(@group), data: { no_turbolink: true}) %>
+  <!-- Kaitlin tricked the system by going into the array which is containers, but there is only one. So it displays the first which is the only one! -->
+
+  <%= @group.passcode %>
+  <%= link_to "Enter Passcode", new_group_user_group_path(@group) %>
+  <%= link_to "Invite Friends", new_group_invitee_path(@group) %>
 <% else %>
-
+  <%= link_to "Join Group", new_group_user_group_path(@group) %>
 <% end %>

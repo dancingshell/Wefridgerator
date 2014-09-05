@@ -1,0 +1,6 @@
+<% if current_user %>
+	
+<%= link_to "Groups", groups_path, class: "pull-left" %>
+
+	Hi, <%= current_user.first_name %>!<%= link_to "Log out", session_path, method: :delete, class: "pull-right" %>
+<% end %>

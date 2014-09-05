@@ -1,0 +1,4 @@
+<%= form_for @invitee, {url: group_invitees_path(@group)} do |f| %>
+  <%= f.text_area :email, placeholder: "Enter emails", name: "email" %>
+  <%= f.submit %>
+<% end %>

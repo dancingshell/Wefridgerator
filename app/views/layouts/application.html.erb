@@ -3,19 +3,24 @@
 <head>
   <title>Wefridgerator</title>
 
+<<<<<<< HEAD
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.js"></script>
  
+=======
+  
+
+>>>>>>> 46256b23139f203930880ffeecef472b8e8f85f0
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "angular" %>
+  <link href='http://fonts.googleapis.com/css?family=Varela+Round|Hammersmith+One|Lemon' rel='stylesheet' type='text/css'> 
   <%= csrf_meta_tags %>
+
 </head>
 
 <body>
 
-<% if current_user %>
-	Hi, <%= current_user.first_name %>!<%= link_to "Log out", session_path, method: :delete, class: "pull-right" %>
-<% end %>
-
+ <%= render 'partials/navbar' %>
 <%= yield %>
 
 

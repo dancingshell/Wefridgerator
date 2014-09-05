@@ -15,12 +15,12 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
-var app = angular.module('WefridgeratorApp', []);
-app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
-  console.log('angular loaded');
 
-  window.onload = function() {
+$('#close').click(function() {
+    location.reload();
+});
 
+<<<<<<< HEAD
     $scope.setCategory = function(category){
       $scope.categorySelected = category;
     }
@@ -135,5 +135,7 @@ app.controller('dragNdrop', ['$scope', '$http', function($scope, $http) {
     });
   };
 }]);
+=======
+>>>>>>> 46256b23139f203930880ffeecef472b8e8f85f0
 
 

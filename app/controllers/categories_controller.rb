@@ -1,18 +1,27 @@
 class CategoriesController < ApplicationController
-  def index
-    @container = Container.find(params[:container_id])
-    @categories = Category.where(:container => @container)
-    @item = Item.new
-    
- 
-  end
 
+
+  def index 
+    @group = Group.find(params[:group_id])
+    @message = Message.new
+    @categories = Category.where(:group_id => @group)
+    @item = Item.new
+    @items = Item.all
+    @shopping_list_items = Item.where(:container_type => "Shopping List")
+    @category_array = @categories.all.map { |f|
+        { id: f.id, name: f.name, image: f.image} }.to_json
+  
+    respond_to do |format|
+     format.html
+     format.js
+    end
+  end
+  
   def show
-    @category = Category.find(params[:id])
   end
 
   def new
-    @category = Category.find(params[:id])
+    @category = Category.new
     @item = Item.new
   end
 
@@ -28,16 +37,11 @@ class CategoriesController < ApplicationController
   def destroy
   end
 
-  def check_anagram
-    s = params[:s]
-    h = Hash.new
-    s.chars.uniq.each { |x| h[x] = s.count(x).even? }
-    render json: h.values.count(false) <= 1 ? 1 : 0
-    h = -1 if s != nil
-  end
 
-  def nothing
-    render nothing: true
+  def item_json
+    # @container = Container.find(params[:id])
+    @categories = Category.where(:group_id => @group)
+    @items = render json: Item.where(category_id: @categories.map(&:id))
   end
 
 

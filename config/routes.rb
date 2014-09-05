@@ -1,4 +1,5 @@
 Wefridgerator::Application.routes.draw do
+  get "invitees/new"
   root 'users#new'
 
   resources :users
@@ -6,31 +7,27 @@ Wefridgerator::Application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resources :static_pages 
-
+  
   post "categories/:category_id/items/:id/update" => "items#update_item", as: :update_item
   get "categories/:id/items/new_item" => "items#new_container_item", as: :new_container_item
   get "categories/:id/items/new_sl" => "items#new_shopping_list_item", as: :new_shopping_list_item
-  get "categories/api/"  => "categories#nothing"
-  get "categories/api/:s" => "categories#check_anagram"
+  # get "categories/api/"  => "categories#nothing"
+  get "groups/:id/api/items" => "categories#item_json"
+  #delete "containers/:id/api/items" => "items#destroy"
+  delete "categories/:category_id/items/:id" => "items#destroy"
+
 
   resources :groups do
+    resources :invitees
     resources :user_groups
-    resources :containers
     resources :receipts
-    resources :chat_rooms
-  end
-
-  resources :containers do
     resources :categories
     resources :arts
+    resources :messages
   end
 
   resources :categories do
     resources :items, only: [:index, :show, :create, :edit, :update, :destroy]
-  end
-
-  resources :chat_rooms do
-    resources :messages
   end
 
 end
