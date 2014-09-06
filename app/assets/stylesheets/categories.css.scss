@@ -7,7 +7,7 @@
   margin-bottom: 30px;
 }
 #drop-target-one,
-#drop-target-two
+#drop-target-two 
  {
   display: inline-block;
   background-color: white;
@@ -76,7 +76,6 @@ li {
   list-style: none;
 }
 
-
 .scroll { 
   padding: 10px 20px;
   width: 585px;
@@ -85,4 +84,13 @@ li {
   border-radius: 25px;
   background: lighten(#4AABCC, 10%);
   margin-bottom: 20px;
+}
+
+.item-name {
+  font-size: 20px;
+  margin-bottom: -20px;
+}
+
+.item-image-mini {
+  margin-top: 13px;
 }

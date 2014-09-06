@@ -19,6 +19,3 @@
 $('#close').click(function() {
     location.reload();
 });
-
-
-

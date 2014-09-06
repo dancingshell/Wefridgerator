@@ -41,12 +41,12 @@
 
 <!-- items index -->
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3 col-md-offset-1">
     <h1 class="container-list-title text-center"><%= @group.name %> Items</h1>
-    <div class="btn btn-primary" ng-click="filter('All')">All Items</div>
-    <div class="btn btn-primary" ng-click="filter('Refridgerator')">Refridgerator</div>
-    <div class="btn btn-primary" ng-click="filter('Freezer')">Freezer</div>
-    <div class="btn btn-primary" ng-click="filter('Pantry')">Pantry</div>
+    <div class="btn btn-primary btn-sm" ng-click="filter('All')">All Items</div>
+    <div class="btn btn-primary btn-sm" ng-click="filter('Refridgerator')">Refridgerator</div>
+    <div class="btn btn-primary btn-sm" ng-click="filter('Freezer')">Freezer</div>
+    <div class="btn btn-primary btn-sm" ng-click="filter('Pantry')">Pantry</div>
 
     <% @items.each  do |item| %>
     
@@ -55,22 +55,21 @@
   
       <% if item.container_type != "Shopping List" %>
       
-      <li ng-show='filter_view == "All" || filter_view == "<%= item.container_type %>"'>
-
-<%= image_tag item.category.image + ".png", class: "img-responsive", size: "30x30" %>
-
-     <strong><%= item.name %></strong> in <b><%= item.container_type %></b>  <% if item.exp_date %>, <b>Expires:</b> <%= item.exp_date.strftime("%A, %D") %><% end %>
-          
-
-      <%= link_to "x", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger btn-xs pull-right"%>
-      
-          <%= link_to "+ Shopping List", update_item_url(item.category_id, item) ,method: :post, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Adding to Shopping List..."}, class: "btn btn-success btn-xs pull-right"%>
+        <li ng-show='filter_view == "All" || filter_view == "<%= item.container_type %>"'>
+          <div class="col-md-2 item-image-mini">
+            <%= image_tag item.category.image + ".png", class: "img-responsive", size: "30x30" %>
+          </div>
+          <div class="col-md-10">
+            <div class="item-name"><%= item.name %></div><br>in <b><%= item.container_type %></b>  <% if item.exp_date %>, <b>Expires:</b> <%= item.exp_date.strftime("%A, %D") %><% end %>
+            <%= link_to " x ", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger btn-xs pull-right"%>
+            <%= link_to " + ", update_item_url(item.category_id, item) ,method: :post, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Adding to Shopping List..."}, class: "btn btn-warning btn-xs pull-right"%>
+          </div>
         </li>
       <% end %>
       <% end %>
     <% end %>
   </div>
-  <div class="col-md-6 ">
+  <div class="col-md-4">
   	<div class="col-md-6 text-center">
   		<p class="container-title">Add to Kitchen</p>
       <div id="drop-target-one"></div>
@@ -82,21 +81,17 @@
   	</div>
   
   </div>
- <div class="col-md-3">
+ <div class="col-md-4">
     <h1 class="container-list-title text-center">Shopping list</h1>
 
     <% @shopping_list_items.each do |item| %>
-      
-
+  
  <% item_group = item.category.group.id %>
       <% if item_group == @group.id %>
     <% if item.container_type == "Shopping List" %>
-      <li><strong><%= item.name %></strong>
-      
+      <li><strong><%= item.name %></strong>  
     
     <button class="btn btn-success btn-xs" data-toggle="modal" data-remote="<%= edit_category_item_url(item.category_id, item) %>" data-target=".bs-example-modal1-lg">Bought!</button>
-
-
 
         <%= link_to "x", category_item_url(item.category_id, item), method: :delete, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Deleting..."}, class: "btn btn-danger btn-xs"%>
       </li>
