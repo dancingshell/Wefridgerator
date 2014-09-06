@@ -16,3 +16,8 @@
 /tmp
 .DS_Store
 .env
+
+*.swp
+/vendor
+
+Gemfile.lock
