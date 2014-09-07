@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
     @shopping_list_items = Item.where(:container_type => "Shopping List")
     @category_array = @categories.all.map { |f|
         { id: f.id, name: f.name, image: f.image} }.to_json
+    @other_category = @categories.where(name: "Other").first
   
     respond_to do |format|
      format.html

@@ -15,6 +15,7 @@ Wefridgerator::Application.routes.draw do
   get "groups/:id/api/items" => "categories#item_json"
   #delete "containers/:id/api/items" => "items#destroy"
   delete "categories/:category_id/items/:id" => "items#destroy"
+  post "categories/:id/items/speech" => "items#create_speech", as: :new_speech_item
 
 
   resources :groups do
