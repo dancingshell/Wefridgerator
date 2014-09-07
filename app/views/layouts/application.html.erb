@@ -9,13 +9,14 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "angular" %>
   <link href='http://fonts.googleapis.com/css?family=Varela+Round|Hammersmith+One|Lemon' rel='stylesheet' type='text/css'> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.js"> </script>
   <%= csrf_meta_tags %>
-
+ 
 </head>
 
 <body>
 
- <%= render 'partials/navbar' %>
+<%= render 'partials/navbar' %>
 <%= yield %>
 
 
