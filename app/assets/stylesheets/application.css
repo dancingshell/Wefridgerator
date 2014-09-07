@@ -12,9 +12,17 @@
  *= require font-awesome
  *= require_tree .
  */
+
+@import url(http://fonts.googleapis.com/css?family=Francois+One);
+
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+img {
+          display: block;
+          height: auto;
+          max-width: 100%;
+}
 
 body {
   background: #4AABCC;
@@ -58,4 +66,5 @@ a {
 .navbar-inverse .navbar-nav > li > a {
   color: white;
 }
+
 

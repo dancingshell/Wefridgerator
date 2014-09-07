@@ -1,39 +1,204 @@
-.nav_bar {
+@import url(http://fonts.googleapis.com/css?family=Francois+One);
+
+.img-responsive {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.top {
+	margin: 0 auto;
+	position: relative;
+	background-color: #82CDE0;
+	
+}
+
+.mid {
+	margin: 0 auto;
+	position: relative;
+	background-color: #82CDE0;	
+	width: 100%;
+}
+
+.bottom {
+	margin: 0 auto;
+	position: relative;
+	background-color: #E25345;
+	width: 1200px;
+	height: 200px;	
+}
+
+
+
+
+
+h4 {
+	font-family: 'Francois One', sans-serif; font-weight: 300;
+	text-align: center;
+	float: right;
+	font-style: Helvetica;
+	font-size: 60px;
+	color: white;
+	margin-top: 300px;
+	margin-right: 100px;
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+	h4 {
+		font-size: 55px;
+		margin-top: 25px;
+		left: 30%;
+	}
+	.top {
+		max-height: 1200px;
+
+	}
+
+	.bottom {
+		height: auto;
+		width: auto;
+	}
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+	h4 {
+		font-size: 40px;
+		margin-top: 25px;
+		text-align: center;
+	}
+	.top {
+		max-height: 870px;
+
+	}
+
+	.bottom {
+		height: auto;
+		width: auto;
+	}
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+
+
+}
+
+
+/*html,body,section {
+	height:100%;
+}*/
+
+/*css reset*/
+/*html,body {
+	margin:0; padding:0;
+}*/
+
+/*section {
+  background-repeat:no-repeat;
+  background-size: cover; 
+  border-style: dotted;
+  position: absolute;
+}*/
+
+/*.img-responsive {
+ display: block;
+ height: auto;
+ max-width: 100%;
+}*/
+
+/*#container {
+	width: 1200px;
+	height: 2000px;
+	padding: 20px;
+	position: relative;
+}*/
+
+
+/*.nav_bar {
 	border-style: dashed;
 	border-width: 2px;
 	border-color: black;
 	width: 960px;
 	height: 60px;
+}*/
+
+.boing {
+ /* // max width of image*/
+  background-image: url(top.png);
+  background-repeat: no-repeat;
+  width: 1201px;
+  height: 600px;
+  overflow: hidden;
 }
 
+/*.img-responsive {
+max-width: 100%; 
+display:block; 
+height: auto;
+}*/
 
-.hero_image {
+
+/*.top {
+	width: 1201px;
+	height: 600px;
+	background-image: url(top.png);
+	margin: 0 auto;
+	position: absolute;
+}*/
+
+/*.hero_image {
 	background: url(WF_kitcen.png); 
 	margin: 0 auto;
 	width: 960px;
 	height: 480px;
 	z-index: 2;
-}
+	position: absolute;
+	top: 6%;
+	left: 9%;
+	padding-top: 255px;
+}*/
 
-.flys {
+
+
+/*.flys {
 background: url(flies2.png);
 background-repeat: no-repeat;
 margin-left: 583px;
 margin-top: -437px;
 width: 100px;
 height: 100px;
+position: absolute;
+top: 98%;
+left: -14%;*/
 
-}
-.sparkle {
+
+/*.sparkle {
 background: url(sparkle.png);
 background-repeat: no-repeat;
 width: 200px;
 height: 200px;
 margin-left: 685px;
 opacity: 0;
-}
+position: absolute;
+top: 54%;
+right: 31%;
+}*/
 
-.sidea {
+/*.sidea {
 	background: url(fridge_sideB.png);
 	z-index: 100;
 }
@@ -46,13 +211,15 @@ opacity: 0;
 }
 
 .wrap {
-	position: relative;
+	position: absolute;
 	margin: 0 auto;
 	width: 139px;
 	height: 265px;
 	cursor: pointer;
 	transition:-webkit-transform 0.5s ease-in;
 	-webkit-transform-style: preserve-3d;
+	top: 40%;
+	left: 53%;
 
 }
 .wrap div {
@@ -62,16 +229,16 @@ opacity: 0;
 	background-repeat: no-repeat;
 	text-align: center;
 	-webkit-backface-visibility: hidden;
-}
+}*/
 
 /*This wrap makes the other pic go behind it*/
-.wrap div {
+/*.wrap div {
 	position: absolute;
 }
 
 .wrap:hover {
 	-webkit-transform: rotateY(0.5turn);
-}
+}*/
 
 
 /*.sparkle::after {
@@ -93,7 +260,7 @@ h1 {
 }*/
 
 /*Animations*/
-.flys {
+/*.flys {
 	-webkit-animation: flies-flying 3s ease-in-out;
 	-webkit-animation-iteration-count: infinite;
 }
@@ -103,7 +270,7 @@ h1 {
 }
 
 /*Keyframes*/
-@-webkit-keyframes flies-flying {
+/*@-webkit-keyframes flies-flying {
 	0% { -webkit-transform: rotate(0) translateY(0); }
 	50% { -webkit-transform: rotate(-5deg) translateY(-20px); }
 	100% { -webkit-transform: rotate(0) translateY(0);}
@@ -114,5 +281,4 @@ h1 {
 	60% { opacity: 1; }
 	100% { -webkit-transform: translate(-15%, -35%) rotateZ(20deg); }
 }
-
-
+*/
